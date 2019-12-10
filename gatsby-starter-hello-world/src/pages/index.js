@@ -12,7 +12,7 @@ const Index = () => {
                 edges {
                     node {
                         childImageSharp {
-                            fluid{
+                            fluid(background:"rgb(240, 196, 80)"){
                                 ...GatsbyImageSharpFluid
                             }
                         }
@@ -32,17 +32,21 @@ const Index = () => {
     console.log(columns);
     return (
         <div className="container">
+            <div className="qztBA">
             {columns.map(column => {
                 return (
                     <div className="column">
                         {column.map(image => {
                             return (
-                                <Img fluid={image}></Img>
+                                <div className="imgIl">
+                                    <Img fluid={image} backgroundColor={"rgb(240, 196, 80)"}></Img>
+                                </div>
                             )
                         })}
                     </div>
                 )
             })}
+            </div>
         </div>
     );
 }

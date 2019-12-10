@@ -2,8 +2,9 @@
     max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: center;   
 }
+
 
 .column{
     width: 33.33%;
@@ -11,6 +12,12 @@
     padding-left: var(--column-gutter);
     float: left;
 }
+
+.imgIl{
+    padding-bottom: 20px;
+    margin: 14px;
+}
+
 .column:first-child {
     margin-left: 0;
 }
