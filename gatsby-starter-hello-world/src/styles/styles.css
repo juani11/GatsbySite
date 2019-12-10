@@ -1,0 +1,19 @@
+.container{
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.column{
+    width: 33.33%;
+    padding-bottom: 0;
+    padding-left: var(--column-gutter);
+    float: left;
+}
+.column:first-child {
+    margin-left: 0;
+}
+.column:last-child {
+    margin-right: 0;
+}
