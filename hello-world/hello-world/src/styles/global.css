@@ -1,37 +1,46 @@
 html {
-    font-family: "raleway";
-  }
-  
-  p {
-    color: maroon;
-  }
+  font-family: "raleway";
+}
 
+.img-wrapper {
+  padding-bottom: 20px;
+  margin: 14px;
 
-  
-  
-  /* Responsive layout - makes a two column-layout instead of four columns */
-  @media (min-width : 1224px) {
-  
-  .row {
+}
+
+img{
+  border-radius: 4%;
+}
+
+.img-wrapper:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (min-width: 1224px) {
+  .container {
     display: flex;
     /*flex-wrap: wrap;*/
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 4px;
   }
 
   /* Create four equal columns that sits next to each other */
   .column {
+    width: 33.33%;
     flex: 25%;
-    max-width: 25%;
     padding: 0 4px;
   }
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media only screen and (min-width : 768px) and (max-width : 1224px) {
-
-  .row {
+@media only screen and (min-width: 768px) and (max-width: 1224px) {
+  .container {
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     padding: 0 4px;
   }
   .column {
@@ -40,5 +49,3 @@ html {
     padding: 0 4px;
   }
 }
-
-
