@@ -1,7 +1,9 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby" // to query for image data
-import Img from "gatsby-image" // to take image data and render it
+import { graphql, useStaticQuery } from "gatsby"
 import { chunk } from 'lodash';
+import IlustrationsGrid from "../components/IlustrationsGrid";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 const Index = () => {
 
@@ -14,6 +16,7 @@ const Index = () => {
 						childImageSharp {
 							fluid(maxWidth: 800) {
 								...GatsbyImageSharpFluid
+								originalName
 							}
 							id
 						}
@@ -23,24 +26,17 @@ const Index = () => {
 		}
 	`)
 
-
-
+	//Separo el arreglo de imagenes retornado por la query en un arreglo de arreglos . donde cada arreglo tiene como maximo 4 imagenes. 
+	//Por ej: Si el arreglo que devuelve la query tiene 20 imagenes, se separa el arreglo en un arreglo con 5 arreglos(cada uno con 4 elementos)
 	const columns = chunk(data.allFile.edges.map(image => ({
 		...image.node.childImageSharp
 	})), 4);
+
 	return (
-		<div className="container">
-			{columns.map(column => {
-				return (
-					<div className="column">
-						{column.map(image =>
-							<div className="img-wrapper" key={image.id} >
-								<Img fluid={image.fluid} backgroundColor={"rgb(0, 0, 0,0.7)"} />
-							</div>
-						)}
-					</div>
-				)
-			})}
+		<div>
+			<Navbar/>
+			<IlustrationsGrid data={columns} />
+			<Footer />
 		</div>
 	);
 }
