@@ -2,12 +2,13 @@ import React from "react"
 
 import '../styles/styles.css'
 import Ilustrations from "../components/Ilustrations";
-
+import Clock from "../components/clock";
+import SlideShow from "../components/clock";
 const Index = () => {
 
 
     return (
-        <Ilustrations/>
+       <SlideShow />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     );
 }
 

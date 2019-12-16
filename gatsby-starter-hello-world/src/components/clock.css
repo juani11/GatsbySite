@@ -1,0 +1,54 @@
+
+  .slideshow li span {
+    
+   
+    /*-webkit-backface-visibility: hidden;*/
+    -webkit-animation: fadeInOpacity 40s linear infinite 0s;
+    -moz-animation: fadeInOpacity 40s linear infinite 0s;
+    -o-animation: fadeInOpacity 40s linear infinite 0s;
+    -ms-animation: fadeInOpacity 40s linear infinite 0s;
+    animation: fadeInOpacity 40s linear infinite 0s;
+    /*background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}/*
+
+.fade-in {
+    opacity: 0;
+    -webkit-animation: fadeInOpacity 40s linear infinite 0s;
+    -moz-animation: fadeInOpacity 40s linear infinite 0s;
+    -o-animation: fadeInOpacity 40s linear infinite 0s;
+    -ms-animation: fadeInOpacity 40s linear infinite 0s;
+    animation: fadeInOpacity 40s linear infinite 0s;
+}*/
+
+@-webkit-keyframes fadeInOpacity { 
+    0%   { opacity: 0;}
+    0.5%   { opacity: 1;}
+    17%  { opacity: 1;}
+    17.5%  { opacity: 0;}	
+    100% { opacity: 0 }
+}
+
+
+@keyframes fadeInOpacity { 
+    0%   { opacity: 0;}
+    0.5%   { opacity: 1;}
+    17%  { opacity: 1;}
+    17.5%  { opacity: 0;}	
+    100% { opacity: 0 }
+}
+
+/*
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    11%{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}*/
