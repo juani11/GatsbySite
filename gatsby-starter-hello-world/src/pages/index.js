@@ -1,15 +1,35 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import IlustrationsGrid from "../components/ilustrationsGrid";
+import Layout from "../components/layout";
 
-import '../styles/styles.css'
-import Ilustrations from "../components/Ilustrations";
-import Clock from "../components/clock";
-import SlideShow from "../components/clock";
+
 const Index = () => {
 
-
-    return (
-       <SlideShow />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    );
+    const data = useStaticQuery(graphql`
+		query {
+			allFile(filter: {extension: {regex: "/(jpg)|(png)|(jpeg)/"}}) {
+				edges {
+					node {
+						base
+						childImageSharp {
+							fluid(maxWidth: 800) {
+								...GatsbyImageSharpFluid
+								originalName
+							}
+							id
+						}
+					}
+				}
+			}
+		}
+	`)
+	
+	return (
+		<Layout>
+			<IlustrationsGrid data={data.allFile}/>
+		</Layout>
+	);
 }
 
 export default Index;

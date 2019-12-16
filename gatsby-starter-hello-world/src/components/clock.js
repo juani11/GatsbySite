@@ -71,7 +71,7 @@ class Clock extends React.Component {
 
 export default Clock;*/
 
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Img from 'gatsby-image';
 
 import { useStaticQuery, graphql } from 'gatsby'
@@ -80,20 +80,20 @@ function SlideShow() {
     const [index, setIndex] = useState(0)
     const { allFile } = useStaticQuery(
         graphql`
-        query {
-            allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}}) {
-                edges {
-                    node {
-                        childImageSharp {
-                            fluid(maxWidth:1000,maxHeight:500){
-                                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            query {
+                allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}}) {
+                    edges {
+                        node {
+                            childImageSharp {
+                                fluid(maxWidth:1000,maxHeight:500){
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    `
+        `
     )
     //Minus 1 for array offset from 0
     const length = allFile.edges.length - 1
@@ -101,11 +101,11 @@ function SlideShow() {
         index === length ? setIndex(0) : setIndex(index + 1)
     const handlePrevious = () =>
         index === 0 ? setIndex(length) : setIndex(index - 1)
-    const { node } = allFile.edges[index]                                                                                                                                                            
+    const { node } = allFile.edges[index]
     return (
         <div>
-            <div style={{maxWidth:"50%",maxHeight:"50%"}}>
-                <Img fluid={node.childImageSharp.fluid}/>
+            <div style={{ maxWidth: "50%", maxHeight: "50%" }}>
+                <Img fluid={node.childImageSharp.fluid} />
             </div>
             <div>
                 <button onClick={() => handlePrevious()}>Previous</button>
