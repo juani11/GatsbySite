@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav className="navbar navbar-inverse bg-inverse navbar-expand-lg sticky" id="section-works-content">
             <div className="container">
                 <a className="navbar-brand" href="#pageTop" id="logoBrand">
-                    <img src="images/logob.png" width="180" height="32" alt="Maria Julia Tagliero" /></a>
+                    <img src="layoutImgs/logob.png" width="180" height="32" alt="Maria Julia Tagliero" /></a>
                 <button className="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">

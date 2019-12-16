@@ -1,22 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { chunk } from 'lodash';
 import IlustrationsGrid from "../components/IlustrationsGrid";
 import Img from "gatsby-image"
 import "./detail.css"
 import Footer from "../components/footer";
 
 export default ({ data }) => {
-    const columns = chunk(data.othersIlustrations.edges.map(image => ({
-        ...image.node.childImageSharp
-    })), 4);
-    console.log(data);
+
     const ilustration = data.selectIlustration.edges[0].node
 
     const detailStyle={
         textAlign: "center",
         fontFamily:"raleway"
-        
     }
 
     return (
@@ -26,7 +21,7 @@ export default ({ data }) => {
                 <Img fluid={ilustration.childImageSharp.fluid} backgroundColor={"rgb(0, 0, 0,0.7)"} durationFadeIn={1200} />
             </div>
             <h2 style={detailStyle}>OTRAS ILUSTRACIONES</h2>
-            <IlustrationsGrid data={columns} />
+            <IlustrationsGrid data={data.othersIlustrations}/>
             <Footer/>
         </div>
 

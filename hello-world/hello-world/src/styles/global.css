@@ -1,47 +1,44 @@
-html {
-  font-family: "raleway";
-}
-
-.img-wrapper {
+.ilustrations-grid-img-wrapper {
   padding-bottom: 20px;
   margin: 14px;
-
 }
 
-.img-wrapper:hover {
+.ilustrations-grid-img-wrapper:hover {
   opacity: 0.7;
   filter: alpha(opacity=70); /* For IE8 and earlier */
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media (min-width: 1224px) {
-  .container {
+  .ilustrations-grid-container {
     display: flex;
     /*flex-wrap: wrap;*/
     max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 4px;
+
   }
 
   /* Create four equal columns that sits next to each other */
-  .column {
+  .ilustrations-grid-column {
     width: 33.33%;
     flex: 25%;
     padding: 0 4px;
+
   }
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media only screen and (min-width: 768px) and (max-width: 1224px) {
-  .container {
+  .ilustrations-grid-container {
     display: flex;
-    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
     padding: 0 4px;
   }
-  .column {
-    flex: 45%;
-    max-width: 45%;
+  .ilustrations-grid-column {
+    flex: 40%;
+    width: 50%;
     padding: 0 4px;
   }
 }
