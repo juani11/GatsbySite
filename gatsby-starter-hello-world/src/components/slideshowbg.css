@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0
+  }
+
+#slideshowbg {
+    position: relative;
+    width: "100%";
+    height: "100vh";
+    overflow: "hidden";
+    display: "flex";
+}
+
+#slideshowbg  li {
+    opacity: 0;
+    width: 100%;
+    margin:0 auto;
+    list-style: none;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    -webkit-animation: fadeInOpacity 42s linear infinite 0s;
+    -moz-animation: fadeInOpacity 42s linear infinite 0s;
+    -o-animation: fadeInOpacity 42s linear infinite 0s;
+    -ms-animation: fadeInOpacity 42s linear infinite 0s;
+    animation: fadeInOpacity 42s linear infinite 0s;
+}
+#slideshowbg li:nth-child(7)  { 
+    -webkit-animation-delay: 36s;
+    -moz-animation-delay: 36s;
+    -o-animation-delay: 36s;
+    -ms-animation-delay: 36s;
+    animation-delay: 36s;
+}
+
+#slideshowbg li:nth-child(6)  { 
+    -webkit-animation-delay: 30s;
+    -moz-animation-delay: 30s;
+    -o-animation-delay: 30s;
+    -ms-animation-delay: 30s;
+    animation-delay: 30s;
+}
+
+#slideshowbg li:nth-child(5)  { 
+    -webkit-animation-delay: 24s;
+    -moz-animation-delay: 24s;
+    -o-animation-delay: 24s;
+    -ms-animation-delay: 24s;
+    animation-delay: 24s;
+}
+
+#slideshowbg li:nth-child(4)  { 
+    -webkit-animation-delay: 18s;
+    -moz-animation-delay: 18s;
+    -o-animation-delay: 18s;
+    -ms-animation-delay: 18s;
+    animation-delay: 18s;
+}
+
+#slideshowbg li:nth-child(3)  { 
+    -webkit-animation-delay: 12s;
+    -moz-animation-delay: 12s;
+    -o-animation-delay: 12s;
+    -ms-animation-delay: 12s;
+    animation-delay: 12s;
+}
+
+#slideshowbg li:nth-child(2)  { 
+    -webkit-animation-delay: 6s;
+    -moz-animation-delay: 6s;
+    -o-animation-delay: 6s;
+    -ms-animation-delay: 6s;
+    animation-delay: 6s;
+}
+
+#slideshowbg li:nth-child(1)  { 
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    -ms-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+#slideshowbg .gatsby-image-wrapper{
+    position: unset !important;
+    margin:0 auto;
+}
+
+@keyframes fadeInOpacity { 
+    0%   { opacity: 0;}/*1 segs*/
+    0.5% { opacity: 1 }
+    14.28%{opacity: 1}
+    17.66%{opacity: 0}
+    100% { opacity: 0 }/*18 segs*/
+}

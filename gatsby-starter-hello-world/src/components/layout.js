@@ -1,14 +1,17 @@
 import React from "react"
 import "./layout.css"
-import SlideShow from "../components/clock";
+
 import Navbar from "./navbar"
 import Footer from "./footer";
+import SlideShowBG from "./slideshowbg";
+
 
 export default ({ children }) => (
+
     <div>
-        <SlideShow/>
-        <Navbar/>
+        <SlideShowBG/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
     </div>
 )
