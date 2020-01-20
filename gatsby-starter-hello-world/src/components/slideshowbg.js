@@ -14,6 +14,7 @@ function SlideShowBG() {
                     edges {
                         node {
                             id
+                            name
                             childImageSharp {
                                 fluid(maxWidth:1200,maxHeight:1200){
                                     ...GatsbyImageSharpFluid
@@ -40,10 +41,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[1].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[1].node.name}
                     id={allFile.edges[1].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[1].node.name}
                     preserveStackingContext={true}
 
                 />
@@ -52,10 +53,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[2].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[2].node.name}
                     id={allFile.edges[2].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[2].node.name}
                     preserveStackingContext={true}
                 />
             </li>
@@ -63,10 +64,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[3].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[3].node.name}
                     id={allFile.edges[3].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[3].node.name}
                     preserveStackingContext={true}
                 />
             </li>
@@ -74,10 +75,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[4].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[4].node.name}
                     id={allFile.edges[4].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[4].node.name}
                     preserveStackingContext={true}
                 />
             </li>
@@ -85,10 +86,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[5].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[5].node.name}
                     id={allFile.edges[5].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[5].node.name}
                     preserveStackingContext={true}
                 />
             </li>
@@ -96,10 +97,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[6].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[6].node.name}
                     id={allFile.edges[6].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[6].node.name}
                     preserveStackingContext={true}
                 />
             </li>
@@ -107,10 +108,10 @@ function SlideShowBG() {
                 <BackgroundImage
                     Tag="section"
                     fluid={allFile.edges[7].node.childImageSharp.fluid}
-                    title="Art-Directed Fullscreen Background"
+                    title={allFile.edges[7].node.name}
                     id={allFile.edges[7].node.id}
                     role="img"
-                    aria-label="Art-Directed Fullscreen Background"
+                    aria-label={allFile.edges[7].node.name}
                     preserveStackingContext={true}
                 />
             </li>
