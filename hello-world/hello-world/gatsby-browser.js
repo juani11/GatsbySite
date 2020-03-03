@@ -1,2 +1,6 @@
-import "./src/styles/global.css"
-import "typeface-raleway"
+require ("./src/styles/global.css")
+require ("typeface-raleway")
+
+exports.shouldUpdateScroll = () => {
+    return false;
+  };
