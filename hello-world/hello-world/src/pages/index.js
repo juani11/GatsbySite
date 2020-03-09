@@ -1,9 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import IlustrationsGrid from "../components/IlustrationsGrid";
-import Layout from "../components/layout";
 
-const Index = () => {
+const Index = (location) => {
 
     const data = useStaticQuery(graphql`
 		query {
@@ -12,7 +11,7 @@ const Index = () => {
 					node {
 						base
 						childImageSharp {
-							fluid(maxWidth: 800) {
+							fluid(maxWidth: 1200) {
 								...GatsbyImageSharpFluid
 								originalName
 							}
@@ -24,10 +23,9 @@ const Index = () => {
 		}
 	`)
 	
+
 	return (
-		<Layout>
-			<IlustrationsGrid data={data.allFile}/>
-		</Layout>
+		<IlustrationsGrid data={data.allFile} location={location}/>
 	);
 }
 
