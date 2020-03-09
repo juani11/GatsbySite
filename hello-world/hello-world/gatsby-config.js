@@ -7,8 +7,15 @@
 const path = require(`path`)
 
 module.exports = {
+
   /* Your site config here */
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -18,5 +25,6 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    'gatsby-plugin-page-transitions',
   ],
 }
