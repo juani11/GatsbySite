@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from "gatsby"
 
 const Navbar = () => {
     return (
+
         <nav className="navbar navbar-inverse bg-inverse navbar-expand-lg sticky" id="section-works-content">
             <div className="container">
                 <a className="navbar-brand" href="#pageTop" id="logoBrand">
@@ -14,11 +16,15 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active" >
-                            <a className="nav-link">Ilustraciones</a>
+                            <Link to="/" state={{ fromFeed: true }}>
+                                <a className="nav-link" href="asd">Ilustración</a>
+                            </Link>
                         </li> <li className="nav-item active" >
-                            <a className="nav-link" >Libros</a>
+                            <a className="nav-link" href="asd">Libros</a>
                         </li> <li className="nav-item active" >
-                            <a className="nav-link" >Bio</a>
+                            <Link to="/bio">
+                                <a className="nav-link" href="asd">Bio</a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
