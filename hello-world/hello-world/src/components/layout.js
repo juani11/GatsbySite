@@ -2,11 +2,9 @@ import React from "react"
 import "./layout.css"
 import Navbar from "./navbar"
 import Footer from "./footer";
-import PageTransition from 'gatsby-plugin-page-transitions';
 import '../styles/bootstrap.min.css'
 import '../styles/bootstrap-grid.min.css'
 import SlideShow from "./slideshow";
-import Transition from "./transition";
 import { Helmet } from "react-helmet";
 
 export default ({ children, location }) => {
