@@ -1,6 +1,6 @@
 import React from "react"
 import SlideShow from "./slideshow";
-import { Navigation, NavigationDetail } from "./navbar";
+import { Navigation } from "./navbar";
 import Footer from "./footer";
 
 import "./layout.css"

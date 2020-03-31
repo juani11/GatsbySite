@@ -10,7 +10,7 @@ import {
     Container
 } from 'reactstrap';
 import { Link } from "gatsby"
-
+import logo from '../images/layoutImgs/logob.png'
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -19,13 +19,13 @@ const Navigation = () => {
     return (
         <Navbar color="white" light expand="md" sticky="top" id="section-works-content">
             <Container>
-                <NavbarBrand href="/"><img src="layoutImgs/logob.png" width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
+                <NavbarBrand href="/"><img src={logo} width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <Link to="/" state={{ scrollTop: true }} onClick={toggle}>
-                                <a className="nav-link" href="">ILUSTRACIÓN</a>
+                                <a className="nav-link" href="#">ILUSTRACIÓN</a>
                             </Link>
                         </NavItem>
                         <NavItem>
@@ -33,7 +33,7 @@ const Navigation = () => {
                         </NavItem>
                         <NavItem>
                             <Link to="/bio" onClick={toggle} >
-                                <a className="nav-link" href="">BIO</a>
+                                <a className="nav-link" href="#">BIO</a>
                             </Link>
                         </NavItem>
                     </Nav>
@@ -43,9 +43,8 @@ const Navigation = () => {
     );
 }
 const NavigationDetail = () => {
-    const [collapsed, setCollapsed] = useState(false);
-
-    const toggleNavbar = () => setCollapsed(!collapsed);
+    //const [collapsed, setCollapsed] = useState(false);
+    //const toggleNavbar = () => setCollapsed(!collapsed);
 
     return (
 
@@ -54,7 +53,7 @@ const NavigationDetail = () => {
             <Nav style={{ margin: "0 auto" }}>
                 <NavItem>
                     <Link to="/" state={{ scrollTop: true }} >
-                        <a className="nav-link" href="">ILUSTRACIÓN</a>
+                        <a className="nav-link" href="#">ILUSTRACIÓN</a>
                     </Link>
                 </NavItem>
                 <NavItem>
@@ -62,7 +61,7 @@ const NavigationDetail = () => {
                 </NavItem>
                 <NavItem>
                     <Link to="/bio" >
-                        <a className="nav-link" href="">BIO</a>
+                        <a className="nav-link" href="#">BIO</a>
                     </Link>
                 </NavItem>
             </Nav>

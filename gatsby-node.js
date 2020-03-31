@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"} relativeDirectory: {eq:"prueba"}}) {
+      allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"} relativeDirectory: {eq:"io/ioLarge"}}) {
         edges {
           node {
             name

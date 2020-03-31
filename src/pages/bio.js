@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from 'react';
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image";
+//import { graphql, useStaticQuery } from "gatsby"
+//import Img from "gatsby-image";
 import ReactWOW from 'react-wow'
 import '../styles/animate.css'
+import bioImg from '../images/layoutImgs/bioSmall.png'
 const scrollToRef = (ref) => window.scrollTo({ behavior: "smooth", top: ref.current.offsetTop })
 
 const Bio = () => {
-    const data = useStaticQuery(graphql`
+    /*const data = useStaticQuery(graphql`
 		query {
 			allFile(filter: {name: {eq: "bioSmall"}}) {
 				edges {
@@ -23,7 +24,7 @@ const Bio = () => {
 				}
 			}
 		}
-    `)
+    `)*/
     const refBio = useRef(null)
     useEffect(() => {
         scrollToRef(refBio)
@@ -40,7 +41,7 @@ const Bio = () => {
                             className="col-md-6">
                             <div className="wrapper">
                                 <ReactWOW animation='fadeIn' delay="0.4s" duration="0.7s">
-                                    <img src="layoutImgs/bioSmall.png" className="img-fluid comElement"></img>
+                                    <img src={bioImg} className="img-fluid comElement" alt="Imagen de biografía"></img>
                                 </ReactWOW>
                                 {/*<Img fluid={data.allFile.edges[0].node.childImageSharp.fluid} durationFadeIn={1200} />*/}
                             </div>
@@ -67,7 +68,7 @@ const Bio = () => {
                                     ilustradora
                                             freelance. Desde el año 2017 pertenezco a <a
                                             href="https://adadibujantesdeargentina.org/proyectos/maria-julia-tagliero/"
-                                            target="_blank">ADA</a> (Asociación de Dibujantes Argentinos).
+                                            target="_blank" rel="noopener noreferrer">ADA</a> (Asociación de Dibujantes Argentinos).
                                         </p>
 
                                     <b>Visión</b>
