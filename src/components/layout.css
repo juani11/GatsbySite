@@ -1,0 +1,21 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+/***************NAVBAR**************/
+#section-works-content {
+  padding-top: 30px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Raleway", sans-serif;
+}
+
+.nav-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/**********FOOTER**********************/
+footer {
+  padding: 30px;
+}
