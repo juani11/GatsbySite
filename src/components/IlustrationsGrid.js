@@ -55,9 +55,6 @@ const IlustrationsGrid = (props) => {
                                             <div className="ilustrations-grid-img-wrapper" key={image.id} >
                                                 <Link to={imgLink}>
                                                     <Img fluid={image.fluid} alt={imgName} style={{ borderRadius: 3 }} />
-                                                    <div class="middle">
-                                                        <div class="text">NOMBRE ILUSTRACIÓN</div>
-                                                    </div>
                                                 </Link>
 
                                             </div>
