@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   result.data.allFile.edges.forEach(({ node }) => {
-    const finalSlug = '/' + (node.name);
+    const finalSlug = '/' + ((node.name).replace(/\s/g, '-'));
     createPage({
       path: finalSlug,
       component: path.resolve(`./src/templates/detail.js`),

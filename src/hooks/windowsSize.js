@@ -10,5 +10,5 @@ export const useWindowSize = () => {
         updateSize();
         return () => window.removeEventListener('resize', updateSize);
     }, []);
-    return {size};
+    return { size };
 }

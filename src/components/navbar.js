@@ -10,30 +10,38 @@ import {
     Container
 } from 'reactstrap';
 import { Link } from "gatsby"
+import { useWindowSize } from '../hooks/windowsSize';
 import logo from '../images/layoutImgs/logob.png'
-const Navigation = () => {
+const Navigation = (props) => {
+    const { sticky = false } = props;
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggle = () => setIsOpen(!isOpen);
+    const { size } = useWindowSize();
 
+    const toggle = () => (size[0] <= 768) && setIsOpen(!isOpen);
+
+
+    const propSticky = sticky ? "top" : ""
     return (
-        <Navbar color="white" light expand="md" sticky="top" id="section-works-content">
+        <Navbar color="white" light expand="md" sticky={propSticky} id="section-works-content">
             <Container>
                 <NavbarBrand href="/"><img src={logo} width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <NavItem>
+                        <NavItem active>
                             <Link to="/" state={{ scrollTop: true }} onClick={toggle}>
-                                <a className="nav-link" href="#">ILUSTRACIÓN</a>
+                                <a className="nav-link" href="#">Ilustración</a>
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">LIBROS</NavLink>
+                            <Link to="/books" state={{ scrollTop: true }} onClick={toggle}>
+                                <a className="nav-link" href="#">Libros</a>
+                            </Link>
                         </NavItem>
                         <NavItem>
                             <Link to="/bio" onClick={toggle} >
-                                <a className="nav-link" href="#">BIO</a>
+                                <a className="nav-link" href="#">Bio</a>
                             </Link>
                         </NavItem>
                     </Nav>

@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import IlustrationsGrid from "../components/IlustrationsGrid";
+import IlustrationsGrid from "../components/grid";
 
 const Index = ({ location }) => {
 
@@ -24,8 +24,9 @@ const Index = ({ location }) => {
 	`)
 
 
+
 	return (
-		<IlustrationsGrid data={data.allFile} location={location} animate />
+		<IlustrationsGrid data={data.allFile} location={location} columnsMobile={1} />
 	);
 }
 

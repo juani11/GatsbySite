@@ -5,7 +5,7 @@ body {
 /***************NAVBAR**************/
 #section-works-content {
   padding-top: 30px;
-  font-size: 15px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Raleway", sans-serif;
@@ -13,6 +13,10 @@ body {
 
 .nav-link {
   color: rgba(0, 0, 0, 0.5);
+}
+
+a:hover {
+  text-decoration: none !important;
 }
 
 /**********FOOTER**********************/
