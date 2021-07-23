@@ -1,5 +1,5 @@
 const path = require(`path`)
-
+require("node-fetch");
 exports.createPages = async ({ graphql, actions }) => {
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
@@ -28,3 +28,4 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
