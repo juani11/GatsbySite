@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Collapse,
     Navbar,
@@ -12,6 +12,9 @@ import {
 import { Link } from "gatsby"
 import { useWindowSize } from '../hooks/windowsSize';
 import logo from '../images/layoutImgs/logob.png'
+
+import { CartContext, CartProvider } from "../context/cartContext";
+
 const Navigation = (props) => {
     const { sticky = false } = props;
     const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +23,7 @@ const Navigation = (props) => {
 
     const toggle = () => (size[0] <= 768) && setIsOpen(!isOpen);
 
+    const { cart, cantProducts, subTotal } = useContext(CartContext)
 
     const propSticky = sticky ? "top" : ""
     return (
@@ -42,6 +46,16 @@ const Navigation = (props) => {
                         <NavItem>
                             <Link to="/bio" onClick={toggle} >
                                 <a className="nav-link" href="#">Bio</a>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to="/shop" onClick={toggle} >
+                                <a className="nav-link" href="#">Shop</a>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to="/cart" onClick={toggle} >
+                                <a className="nav-link" href="#">Carrito:({cantProducts()})</a>
                             </Link>
                         </NavItem>
                     </Nav>

@@ -1,0 +1,10 @@
+.cart-list {
+  list-style: none;
+}
+
+.cart-list-item {
+  display: block;
+  width: 100%;
+  padding: 1.5em;
+  border-bottom: 1px solid #fafafa;
+}

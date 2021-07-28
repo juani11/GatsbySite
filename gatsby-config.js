@@ -23,7 +23,13 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`),
       },
     },
-    `gatsby-plugin-sharp`,
+    /*{
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+icon:`faviconn`
+      }
+    }*/
+
     `gatsby-transformer-sharp`,
     { resolve: `gatsby-source-commerce-products` }
   ],

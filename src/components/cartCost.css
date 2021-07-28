@@ -1,0 +1,8 @@
+.cart-cost {
+  text-align: right;
+}
+
+.cart-cost-total {
+  font-size: 25px;
+  font-weight: bold;
+}
