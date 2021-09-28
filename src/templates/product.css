@@ -10,7 +10,8 @@
 }
 
 .product-price {
-  font-size: 20px;
+  padding-top: 20px;
+  font-size: 40px;
   font-weight: 200;
 }
 .ant-tag {

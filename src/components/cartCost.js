@@ -14,7 +14,6 @@ const CartCost = () => {
             <p className="cart-cost-shipping"> Envío: -</p>
             <p className="cart-cost-total"> Total: ${subTotal()}</p>
             <Link to="/checkout"  >
-
                 <Button outline  > Checkout</Button>
             </Link>
         </div>

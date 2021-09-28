@@ -24,6 +24,8 @@ export const cartReducer = (state, action) => {
                 copy.push(productToAdd)
             }
 
+            localStorage.setItem("cart", JSON.stringify(copy));
+
             return {
                 ...state,
                 cart: copy
@@ -43,7 +45,7 @@ export const cartReducer = (state, action) => {
                 copy_cart[indexOfProductToDelete].qty -= 1
             }
 
-
+            localStorage.setItem("cart", JSON.stringify(copy_cart));
 
             return {
                 ...state,

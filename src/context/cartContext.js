@@ -8,6 +8,16 @@ const initialState = {
     cart: []
 }
 
+const windowGlobal = typeof window !== 'undefined' && window
+
+
+if (windowGlobal.localStorage) {
+    if (windowGlobal.localStorage.getItem('cart')) {
+        const cart = JSON.parse(windowGlobal.localStorage.getItem('cart'))
+
+        initialState.cart = cart
+    }
+}
 
 const CartProvider = ({ children }) => {
 
