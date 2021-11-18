@@ -99,18 +99,22 @@ exports.createPages = async ({ graphql, actions }) => {
           id
           name
           description
-          price
+          regular_price
           category {
             id
             name
           }
-          variants {
+          options {
             id
             name
+          }
+          variants {
+            sku
+            price
             options {
+              id
+              name
               value
-              sku
-              price
             }
           }
         }

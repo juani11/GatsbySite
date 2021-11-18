@@ -12,8 +12,8 @@ import {
 import { Link } from "gatsby"
 import { useWindowSize } from '../hooks/windowsSize';
 import logo from '../images/layoutImgs/logob.png'
+import { CartContext } from '../context/cart/cart.context';
 
-import { CartContext, CartProvider } from "../context/cartContext";
 
 const Navigation = (props) => {
     const { sticky = false } = props;
@@ -55,7 +55,7 @@ const Navigation = (props) => {
                         </NavItem>
                         <NavItem>
                             <Link to="/cart" onClick={toggle} >
-                                <a className="nav-link" href="#">Carrito:({cantProducts()})</a>
+                                <a className="nav-link" href="#">Carrito({cantProducts()})</a>
                             </Link>
                         </NavItem>
                     </Nav>

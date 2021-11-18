@@ -1,6 +1,5 @@
-const React = require("react")
-
-const { CartProvider } = require("./src/context/cartContext");
+const React = require("react");
+const { CartProvider } = require("./src/context/cart/cart.context");
 
 
 require("./src/styles/global.css")

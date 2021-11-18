@@ -1,6 +1,5 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { CartContext } from "../context/cartContext"
 import ShopItem from "../components/shopItem"
 
 
@@ -13,7 +12,7 @@ const Shop = () => {
                         id
                         name
                         description
-                        price
+                        regular_price
                         category {
                             id
                             name
@@ -23,6 +22,9 @@ const Shop = () => {
             }
         }
 	`)
+    console.log('Shop Data...');
+
+    console.log(data.allCommerceProduct.edges);
 
     return (
         <div className="container" id="Shop" style={{ maxWidth: "1250px" }}>

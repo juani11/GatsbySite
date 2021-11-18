@@ -6,8 +6,15 @@
 
 const path = require(`path`)
 
-module.exports = {
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
+module.exports = {
+  /*  proxy: {
+
+     url: "http://localhost:4000",
+   }, */
   /* Your site config here */
   plugins: [
     {
@@ -31,6 +38,12 @@ icon:`faviconn`
     }*/
 
     `gatsby-transformer-sharp`,
-    { resolve: `gatsby-source-commerce-products` }
+    {
+      resolve: `gatsby-source-commerce-products`,
+      options: {
+        baseUrl: `localhost:4000`,
+        protocol: `http`,
+      }
+    }
   ],
 }

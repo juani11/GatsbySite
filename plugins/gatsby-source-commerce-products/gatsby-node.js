@@ -1,5 +1,6 @@
 
 const fetch = require("node-fetch");
+const axios = require('axios');
 
 exports.sourceNodes = async ({
     actions,
@@ -11,7 +12,7 @@ exports.sourceNodes = async ({
     const { createNode } = actions
 
     // Download data from a remote API.
-    const response = await fetch('https://mariajuliatagliero.com/server/public/publico')
+    const response = await fetch(`${process.env.GATSBY_API_URL}/publico`)
 
 
     const json = await response.json();

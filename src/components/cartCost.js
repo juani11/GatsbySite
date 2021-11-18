@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { CartContext } from "../context/cartContext";
-import './cartCost.css'
 import { Button } from "reactstrap";
 import { Link } from "gatsby";
+
+import { CartContext } from "../context/cart/cart.context";
+import './cartCost.css'
 
 const CartCost = () => {
 

@@ -1,5 +1,12 @@
 import React, { createContext, useReducer } from "react"
-import { cartReducer } from "../reducer/carReducer";
+
+import {
+    addItemToCart_ACTION,
+    clearCart_ACTION,
+    clearItemFromCart_ACTION,
+    removeItemFromCart_ACTION
+} from "../../reducer/cart/cart.actions";
+import { cartReducer } from "../../reducer/cart/cart.reducer";
 
 
 const CartContext = createContext();
@@ -23,19 +30,10 @@ const CartProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(cartReducer, initialState)
 
-    const addToCart = (productToAdd, qty = 1) => {
-        console.log('Add to cart!');
-
-        dispatch({ type: 'ADD_TO_CART', payload: { productToAdd, qty } })
-    }
-
-    const clearCart = () => {
-        console.log('Cart clear!');
-        dispatch({ type: 'CLEAR_CART' })
-
-    }
-
-
+    const addItemToCart = (productToAdd, qty = 1) => dispatch(addItemToCart_ACTION({ productToAdd, qty }))
+    const removeItemFromCart = productId => dispatch(removeItemFromCart_ACTION(productId))
+    const clearItemFromCart = productId => dispatch(clearItemFromCart_ACTION(productId));
+    const clearCart = () => dispatch(clearCart_ACTION())
 
     const cantProducts = () => {
 
@@ -48,23 +46,26 @@ const CartProvider = ({ children }) => {
         )
     }
 
-    const deleteFromCart = (productId, all) => {
-        dispatch({ type: 'DELETE_FROM_CART', payload: { productId, all } })
-
-    }
-
-
     const subTotal = () => {
         if (state.cart.length == 0)
             return 0
         return state.cart.reduce(
-            (total, current) => total + (current.price * current.qty),
+            (total, current) => total + (current.regular_price * current.qty),
             0
         )
     }
 
     return (
-        <CartContext.Provider value={{ cart: state.cart, addToCart, clearCart, cantProducts, deleteFromCart, subTotal }}>
+        <CartContext.Provider value={
+            {
+                cart: state.cart,
+                addItemToCart,
+                removeItemFromCart,
+                clearItemFromCart,
+                clearCart,
+                cantProducts,
+                subTotal
+            }}>
             {children}
         </CartContext.Provider>
     )
