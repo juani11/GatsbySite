@@ -1,7 +1,11 @@
+.ui.form .field > label {
+  font-weight: 200 !important;
+}
+
 .checkout-box {
   background-color: white;
   padding: 30px;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   box-shadow: 3px 3px 12px -2px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 3px 3px 12px -2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 3px 3px 12px -2px rgba(70, 33, 33, 0.2);
@@ -47,6 +51,8 @@ input:-internal-autofill-selected {
   /*   margin-left: 50px;
   color: black; */
   font-weight: 200;
+  margin-bottom: 20px !important;
+  font-family: "Raleway", sans-serif;
 }
 
 .checkout-box-title {

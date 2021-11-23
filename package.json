@@ -26,11 +26,14 @@
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^7.20.2",
     "react-image-lightbox": "^5.0.0",
     "react-image-magnifiers": "^1.2.2",
     "react-medium-image-zoom": "^4.3.1",
     "react-wow": "^1.0.0",
     "reactstrap": "^8.4.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
     "typeface-raleway": "0.0.75"
   },
   "devDependencies": {

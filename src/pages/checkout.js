@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
-import Shipping from '../components/shipping';
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import Payment from '../components/payment';
 
 import OrderSummary from '../components/orderSummary';
 
+import PurchaseOrderForm from '../components/purchaseOrder-form';
+
+import 'semantic-ui-css/semantic.min.css'
 import '../components/checkout.css'
-import ContactInfo from '../components/contactInfo';
 
 const Checkout = () => {
-
-    const [checkoutStep, setCheckoutStep] = useState({
-        contact: false, shipping: false, payment: false
-    });
 
     return (
         <Container>
             <Row >
                 <Col md={7}>
-                    <ContactInfo checkoutStep={checkoutStep} setCheckoutStep={setCheckoutStep} />
-                    <Shipping checkoutStep={checkoutStep} />
-                    <Payment />
+                    <PurchaseOrderForm />
                 </Col>
                 <Col md={5}>
                     <OrderSummary />

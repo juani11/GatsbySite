@@ -12,8 +12,8 @@ function CheckoutBoxHOC(WrappedComponent, title, colMd) {
             <Container>
                 <div className="checkout-box">
                     <div className="checkout-box-title">
-                        <div className="checkout-box-badge">
-                        </div>
+                        {/* <div className="checkout-box-badge">
+                        </div> */}
                         <h5 className="checkout-box-subtitle">{title}</h5>
                     </div>
                     <WrappedComponent

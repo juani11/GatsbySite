@@ -1,63 +1,45 @@
 import React, { useState } from 'react'
 import CheckoutBoxHOC from '../hoc/checkoutBox';
-import { Container, Form, FormGroup, Label, Input, FormText, Button, FormFeedback } from 'reactstrap';
+import { Form, Label } from 'semantic-ui-react'
 
 const ContactInfo = (props) => {
 
-    const { checkoutStep, setCheckoutStep } = props;
-    const [contactInfo, setContactInfo] = useState(
-        {
-            email: '',
-            valid: null,
-            invalid: null
-        }
-    )
+    const { onChange, register, errors } = props;
 
 
-    const handleChangeEmail = e => {
-        const { value } = e.target;
-        setContactInfo({ email: value });
-    }
-
-    function checkEmail() {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const check = re.test(contactInfo.email);
-
-        setContactInfo({
-            ...contactInfo,
-            valid: check,
-            invalid: !check
-        })
-
-        setCheckoutStep({ ...checkoutStep, contact: check })
-    }
+    /*  const handleChangeEmail = e => {
+         const { value } = e.target;
+         setContactInfo({ email: value });
+     }
+ 
+     function checkEmail() {
+         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+         const check = re.test(contactInfo.email);
+ 
+         setContactInfo({
+             ...contactInfo,
+             valid: check,
+             invalid: !check
+         })
+ 
+         setCheckoutStep({ ...checkoutStep, contact: check })
+     } */
 
     return (
-        <Container>
-            <Form style={{ 'padding': '15px' }}>
-                <FormGroup>
-                    <Label for="shippingEmail">Email</Label>
-                    <Input valid={contactInfo.valid} invalid={contactInfo.invalid} type="email" name="email" id="shippingEmail" value={contactInfo.email} onChange={handleChangeEmail} required />
-
-                    <FormFeedback>Formato de email incorrecto!</FormFeedback>
-                    <FormText> Mediante este email te notificaremos el codigo de seguimiento del envío!</FormText>
-                </FormGroup>
-                {/* <Alert color="warning">
-                   
-                </Alert> */}
-                <div style={{ textAlign: "right", textTransform: "uppercase" }}>
-                    <Button onClick={checkEmail}>
-                        {/* <div style={{ "padding-left": "50px", "padding-right": "50px" }}>
-                        <Spinner size="sm" color="light" />
-                    </div> */}
-                        Continuar
-                    </Button>
-                </div>
-
-            </Form>
-
-        </Container>
-
+        <div style={{ 'padding': '15px' }} >
+            <Form.Field error={errors.email ? true : false}>
+                <label>Email</label>
+                <input type="text" onChange={onChange} name="email" {...register("email",
+                    {
+                        required: 'Debe ingresar un email',
+                        pattern: {
+                            value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message: 'Email inválido'
+                        }
+                    })} />
+                {errors.email && <Label pointing color="red">{errors.email.message}</Label>}
+            </Form.Field>
+        </div>
     );
 
 }
