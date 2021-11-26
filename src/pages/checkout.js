@@ -3,7 +3,8 @@ import { Container, Row, Col } from 'reactstrap';
 
 import OrderSummary from '../components/orderSummary';
 
-import PurchaseOrderForm from '../components/purchaseOrder-form';
+
+import PurchaseOrderForm from '../components/purchaseOrder-form/purchaseOrder-form.component';
 
 import 'semantic-ui-css/semantic.min.css'
 import '../components/checkout.css'

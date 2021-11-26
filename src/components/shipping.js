@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import {
-    Fade, Button,
-    Container, Row, Col,
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
-import { Form, Label, Dropdown } from 'semantic-ui-react'
+import { Form, Label, Dropdown, Grid, Image, TextArea } from 'semantic-ui-react'
 
 import CheckoutBoxHOC from "../hoc/checkoutBox";
+import FormField from "./form-field/form-field.component.js";
+import FormFieldError from "./form-field-error/form-field-error.component";
 
 import "./shipping.css"
 
@@ -38,57 +37,124 @@ const countryOptions = [
 
 const Shipping = (props) => {
 
-    const { onChange, register, errors } = props;
+    const { register, errors, setValue } = props;
+    const { Row, Column } = Grid;
+
+    const handleFocus = e => { e.target.setAttribute("autocomplete", "nope"); }
+
+    const handleChange = (e, { name, value }) => {
+        setValue(name, value, { shouldValidate: true })
+    }
+
+    const provinceDropdown = register('province', { required: 'Debe ingresar una provincia' })
 
 
     return (
         <div style={{ 'padding': '15px' }} >
             <Form.Group >
-                <label>Envío</label>
                 <Form.Radio
-                    label='Small'
-                    value='sm'
+                    label='Sin Envío (Ya acordé para pasar a retirar)'
+                    value='sf'
                 />
                 <Form.Radio
-                    label='Medium'
-                    value='md'
+                    label='Con Envío'
+                    value='st'
                 />
 
             </Form.Group>
-            <Form.Field error={errors.name ? true : false}>
-                <label>Nombre</label>
-                <input type="text"  {...register("name",
-                    {
-                        required: 'Debe ingresar un nombre',
-                        maxLength: {
-                            value: 10,
-                            message: 'Debe ingresar como máximo 10 caracteres'
-                        }
-                    })} />
-                {errors.name && <Label pointing color="red">{errors.name.message}</Label>}
-            </Form.Field>
-            <Form.Input fluid label='Teléfono' type="text" />
-            <Row >
-                <Col md={6}>
-                    <Dropdown
-                        search
-                        selection
-                        options={countryOptions}
-                        placeholder='Choose an option'
-                    />
 
-                </Col>
-                <Col md={4}>
-                    <Form.Input fluid label='Localidad' type="text" name="shippingTown" />
-                </Col>
-                <Col md={2}>
-                    <Form.Input fluid label='C.P' type="text" name="shippingZip" />
-                </Col>
-            </Row>
-            <Form.Input fluid label='Dirección' type="text" name="shippingAddress" />
+            {/* Name */}
+            <FormField
+                register={register}
+                name="name"
+                error={errors.name}
+                maxLength={20} />
+
+            {/* Phone */}
+            <FormField
+                register={register}
+                name="phone"
+                error={errors.phone}
+                maxLength={9} />
+
+            <Grid columns={3} centered stackable>
+                <Row>
+                    <Column width={8}>
+                        <Form.Field error={errors.province ? true : false}>
+                            <label>Provincia</label>
+                            <Dropdown
+                                onFocus={handleFocus}
+                                search
+                                selection
+                                options={countryOptions}
+                                name={provinceDropdown.name}
+                                onChange={(e, value) => {
+                                    provinceDropdown.onChange(e); // method from hook form register
+                                    handleChange(e, value); // your method
+                                }}
+                                onBlur={provinceDropdown.onBlur}
+                                ref={provinceDropdown.ref}
+                            />
+                            {errors.province && <FormFieldError>{errors.province.message}</FormFieldError>}
+                        </Form.Field>
+                    </Column>
+                    <Column width={5}>
+                        <FormField
+                            register={register}
+                            name="locality"
+                            error={errors.locality}
+                            maxLength={20} />
+                    </Column>
+                    <Column width={3}>
+                        <FormField
+                            register={register}
+                            name="zip"
+                            error={errors.zip}
+                            maxLength={4} />
+                    </Column>
+                </Row>
+            </Grid>
+
+            {/* Calle ...Numero*/}
+            <Grid columns={2} centered stackable>
+                <Row>
+                    <Column width={8}>
+                        <FormField
+                            register={register}
+                            name="street"
+                            error={errors.street}
+                            maxLength={15} />
+                    </Column>
+                    <Column width={8}>
+                        <FormField
+                            register={register}
+                            name="number"
+                            error={errors.number}
+                            maxLength={5} />
+                    </Column>
+                </Row>
+            </Grid>
+
+            {/* Piso/Departamento */}
+            <Grid columns={1} centered stackable>
+                <Row>
+                    <Column width={8} floated='left'>
+                        <FormField
+                            register={register}
+                            name="department"
+                            error={errors.department}
+                            maxLength={10} />
+                    </Column>
+                </Row>
+            </Grid>
+
+            <Form.Field>
+                <label>Aclaraciones adicionales sobre la dirección (opcional)</label>
+                <textarea placeholder="Descripción de la fachada,referencias,indicaciones de seguridad,etc" style={{ maxHeight: 80 }} ></textarea>
+            </Form.Field>
         </div>
     )
 
 }
 
-export default CheckoutBoxHOC(Shipping, 'Shipping', 6);
+export default CheckoutBoxHOC(Shipping, 'Información de Envío', 6);
