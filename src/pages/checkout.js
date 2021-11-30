@@ -8,6 +8,7 @@ import PurchaseOrderForm from '../components/purchaseOrder-form/purchaseOrder-fo
 
 import 'semantic-ui-css/semantic.min.css'
 import '../components/checkout.css'
+import Payment from '../components/payment/payment.component';
 
 const Checkout = () => {
 
@@ -15,7 +16,7 @@ const Checkout = () => {
         <Container>
             <Row >
                 <Col md={7}>
-                    <PurchaseOrderForm />
+                    {true ? <Payment /> : <PurchaseOrderForm />}
                 </Col>
                 <Col md={5}>
                     <OrderSummary />

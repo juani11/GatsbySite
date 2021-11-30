@@ -16,7 +16,7 @@ const FormField = ({
             <label>{formConfig[name].label}</label>
             <input type="text" maxLength={maxLength && maxLength} {...register(name,
                 { ...formConfig[name].rules }
-            )} s
+            )}
             />
             {error && <FormFieldError >{error.message}</FormFieldError>}
         </Form.Field>

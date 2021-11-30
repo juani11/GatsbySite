@@ -1,0 +1,7 @@
+const purchaseOrderActionTypes = {
+    START_CREATE_PURCHASE_ORDER: 'START_CREATE_PURCHASE_ORDER',
+    SUCCESS_PURCHASE_ORDER: 'SUCCESS_PURCHASE_ORDER',
+    ERROR_PURCHASE_ORDER: 'ERROR_PURCHASE_ORDER'
+}
+
+export default purchaseOrderActionTypes;

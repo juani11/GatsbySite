@@ -24,9 +24,6 @@ const rules = {
             message: 'Debe ingresar como máximo 9 digitos'
         }
     },
-    province: {
-        required: 'Debe ingresar una provincia'
-    },
     locality: {
         required: 'Debe ingresar una localidad'
     },
@@ -73,10 +70,6 @@ const formConfig = {
     phone: {
         label: 'Teléfono',
         rules: { ...rules.phone }
-    },
-    province: {
-        label: 'Provincia',
-        rules: { ...rules.province }
     },
     locality: {
         label: 'Localidad',
