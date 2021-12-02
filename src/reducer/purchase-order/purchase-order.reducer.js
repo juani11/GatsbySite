@@ -6,22 +6,21 @@ export const purchaseOrderReducer = (state, action) => {
             return {
                 ...state,
                 loading: true,
-                mp_payment: null,
+                mp_preferenceId: null,
                 error: false
             }
         case purchaseOrderActionTypes.SUCCESS_PURCHASE_ORDER:
             return {
                 ...state,
                 loading: false,
-                mp_payment: action.payload,
+                mp_preferenceId: action.payload,
                 error: false
             }
         case purchaseOrderActionTypes.ERROR_PURCHASE_ORDER:
             return {
                 ...state,
                 loading: false,
-                mp_payment: null,
-
+                mp_preferenceId: null,
                 error: true
             }
         default:

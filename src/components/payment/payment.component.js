@@ -4,7 +4,7 @@ import CheckoutBoxHOC from '../../hoc/checkoutBox';
 import useScript from '../../hooks/useScript';
 
 
-const Payment = () => {
+const Payment = ({ preferenceId }) => {
 
     const { MercadoPago } = useScript(
         "https://sdk.mercadopago.com/js/v2",
@@ -13,16 +13,15 @@ const Payment = () => {
 
     useEffect(() => {
         if (MercadoPago) {
-            console.log("use effect..");
             // Agrega credenciales de SDK
-            const mp = new MercadoPago('TEST-be72fa34-7a30-49d0-809c-8bb3102603e4', {
+            const mp = new MercadoPago(process.env.MP_PUBLIC_KEY, {
                 locale: 'es-AR'
             });
 
             // Inicializa el checkout
             mp.checkout({
                 preference: {
-                    id: '233024561-bd2293d5-efc9-47f4-ad0f-ea5670a3b6ba'
+                    id: preferenceId
                 },
                 render: {
                     container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
