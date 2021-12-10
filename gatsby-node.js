@@ -107,6 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
           options {
             id
             name
+            possibleValues
           }
           variants {
             sku
