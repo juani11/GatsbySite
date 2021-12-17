@@ -1,0 +1,8 @@
+.product-option-selected {
+  border: 1px solid !important;
+}
+.product-option-unavailable {
+  border: 1px dashed red !important;
+  pointer-events: none;
+  color: #ccc !important;
+}

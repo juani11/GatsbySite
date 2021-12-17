@@ -50,7 +50,7 @@ const CartProvider = ({ children }) => {
         if (state.cart.length == 0)
             return 0
         return state.cart.reduce(
-            (total, current) => total + (current.regular_price * current.qty),
+            (total, current) => total + (current.price * current.qty),
             0
         )
     }

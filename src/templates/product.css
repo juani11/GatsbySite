@@ -1,28 +1,38 @@
+.product * {
+  font-family: "Raleway", sans-serif;
+}
+
 .product-name {
-  font-size: 30px;
+  /* font-size: 30px; */
   font-weight: 300;
   text-transform: uppercase;
 }
 
 .product-description {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 200;
 }
 
 .product-price {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   font-size: 40px;
   font-weight: 200;
 }
 
-.product-variant-selected {
-  border: 1px solid !important;
+.product-option-name {
+  /* text-transform: uppercase; */
+  margin: 0 !important;
 }
-.product-variant-unavailable {
-  border: 1px dashed red !important;
-  pointer-events: none;
-  color: #ccc !important;
+
+.product-option-possibleValues {
+  margin-bottom: 10px;
 }
+
+.product-addToCart {
+  margin-top: 15px !important;
+  margin-bottom: 30px !important;
+}
+
 .ant-tag {
   box-sizing: border-box;
   margin: 0 8px 0 0;

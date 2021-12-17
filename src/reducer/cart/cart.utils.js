@@ -1,7 +1,7 @@
 export const addItemToCart = (cart, { productToAdd, qty }) => {
 
     const indexOfProduct = cart.findIndex(product =>
-        product.id === productToAdd.id
+        product.sku === productToAdd.sku
     )
 
     //Product already exists in cart
@@ -20,7 +20,7 @@ export const addItemToCart = (cart, { productToAdd, qty }) => {
 export const removeItemFromCart = (cart, productId) => {
 
     const indexOfProductToDelete = cart.findIndex(product =>
-        product.id === productId
+        product.sku === productId
     )
 
     if (cart[indexOfProductToDelete].qty == 1)
@@ -33,4 +33,4 @@ export const removeItemFromCart = (cart, productId) => {
 
 }
 
-export const clearItemFromCart = (cart, productId) => cart.filter(cartItem => cartItem.id !== productId)
+export const clearItemFromCart = (cart, productId) => cart.filter(cartItem => cartItem.sku !== productId)
