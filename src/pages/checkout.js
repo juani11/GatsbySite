@@ -27,9 +27,8 @@ const Checkout = () => {
         <Container>
             <Row >
                 <Col md={7}>
-                    {state.mp_preferenceId ?
-                        <Payment preferenceId={state.mp_preferenceId} /> :
-                        <PurchaseOrderForm checkoutState={{ loading, error }} dispatch={dispatch} />
+                    {state.mp_preferenceId ? <Payment preferenceId={state.mp_preferenceId} />
+                        : <PurchaseOrderForm checkoutState={{ loading, error }} dispatch={dispatch} />
                     }
                 </Col>
                 <Col md={5}>

@@ -5,6 +5,11 @@
 .cart-list-item {
   display: block;
   width: 100%;
-  padding: 1.5em;
+  /*padding: 1.5em;*/
   border-bottom: 1px solid #fafafa;
+}
+
+.cart-checkout-button {
+  text-align: right;
+  margin-top: 20px;
 }

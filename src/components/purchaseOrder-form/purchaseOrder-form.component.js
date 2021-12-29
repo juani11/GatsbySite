@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Form, Button, Message, Popup } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 
 import purchaseOrderActionTypes from '../../reducer/purchase-order/purchase-order.types';
 import { createPurchaseOrder } from '../../services/services';
+
+import { CartContext } from '../../context/cart/cart.context';
 
 import ContactInfo from '../contactInfo';
 import Shipping from '../shipping';
@@ -20,18 +22,13 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
 
     const [hasShipping, setHasShipping] = useState(true);
 
+    const { cart } = useContext(CartContext);
+
     const onSubmit = (data) => {
         const { email: payer_email, ...shipping_data } = data;
 
         const request = {
-            products: [
-                {
-                    "id": "1A",
-                    "name": "El porque de los colores",
-                    "qty": 1,
-                    "price": 33
-                }
-            ],
+            products: [...cart],
             payer_email,
             shipping: hasShipping,
             shipping_data

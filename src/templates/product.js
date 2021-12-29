@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
 
 import { Container } from 'reactstrap';
-import { Button, Grid, Image, Label } from "semantic-ui-react";
+import { Button, Grid, Image } from "semantic-ui-react";
 
 import { CartContext } from "../context/cart/cart.context";
 
 import ProductOption from "../components/product-option/product-option.component";
+import ProductAddedAlert from "../components/product-added-alert/product-added-alert.component";
 
 import "./product.css"
 
@@ -120,9 +121,15 @@ export default ({ pageContext }) => {
             name: product.name,
             description: product.description
         })
+        setVisible(true);
+        setTimeout(() => {
+            setVisible(false)
+        }, 2500);
     }
 
     const allOptionsSelected = () => options.length === Object.keys(selectedOptions).length
+
+    const [visible, setVisible] = useState(false)
 
 
     return (
@@ -156,7 +163,12 @@ export default ({ pageContext }) => {
                                 </>
                             )}
                         </div>
-                        <Button className="product-addToCart" onClick={handleAddToCart} disabled={!allOptionsSelected()}>Agregar al carrito</Button>
+                        <Button className="product-addToCart"
+                            onClick={handleAddToCart}
+                            disabled={!allOptionsSelected() || visible}>
+                            Agregar al carrito
+                        </Button>
+                        <ProductAddedAlert visible={visible} />
                     </Grid.Column>
                 </Grid>
             </section>

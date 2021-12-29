@@ -5,8 +5,7 @@ import Footer from "./footer";
 
 import "./layout.css"
 import '../styles/bootstrap.min.css'
-
-
+import { navigationData } from "../utils/constants";
 export default ({ children, location }) => {
     return (
         <div>

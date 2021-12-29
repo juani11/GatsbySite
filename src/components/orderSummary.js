@@ -1,11 +1,12 @@
 import React from 'react'
+
 import CheckoutBoxHOC from '../hoc/checkoutBox';
 import Cart from './cart';
-const OrderSummary = () => {
-    return (<div>
 
+const OrderSummary = () => {
+    return (
         <Cart />
-    </div>);
+    );
 }
 
 

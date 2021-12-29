@@ -1,44 +1,44 @@
 import React, { useContext } from 'react';
 import { Button, Fade } from "reactstrap";
-import { Button as SemanticButton, Icon } from "semantic-ui-react";
+import { Button as SemanticButton, Image } from "semantic-ui-react";
+
+import QuantitySelector from './cart-item-quantity-selector/cart-item-quantity-selector.component';
 
 import { CartContext } from '../context/cart/cart.context';
+import { currencyFormat } from '../utils/functions';
 
 import './cartItem.css'
 
-const CartItem = (props) => {
-    const { sku, name, price, qty, options } = props.product
-    const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext(CartContext)
+const CartItem = ({ product }) => {
 
+    const { sku, name, price, qty, options } = product
+    const { clearItemFromCart } = useContext(CartContext)
 
     return (
         <Fade className="mt-3">
             <div className="cart-item-wrapp">
-                <div className="cart-item">
-                    <h6 style={{ textTransform: "uppercase", marginBottom: "15px" }}>{name}</h6>
-                    {options && options.map(o => <h6>{o.name}: {o.value}</h6>)}
+                <div className="cart-item-image">
 
-                    <h6 className="cart-item-qty-price">{qty} x ${price}</h6>
-                    <div className="cart-item-qty-selector">
-                        <button onClick={() => removeItemFromCart(sku)}>-</button>
-                        {/* <SemanticButton size="mini" icon>
-                            <Icon name='minus' size="small" />
-                        </SemanticButton> */}
-                        <input value={qty} />
-                        <button onClick={() => addItemToCart(props.product)}>+</button>
-                        {/* <SemanticButton size="mini" icon>
-                            <Icon name='add' size="small" />
-                        </SemanticButton> */}
-                    </div>
+                </div>
+                <div className="cart-item">
+                    <h6 className="cart-item-name">{name}</h6>
+                    {options &&
+                        <div className="cart-item-options">
+                            {options.map(o =>
+                                <div className="cart-item-option" >
+                                    <p className="cart-item-option-name">{o.name}: <span className="cart-item-option-value">{o.value}</span></p>
+                                </div>
+                            )}
+                        </div>
+                    }
+                    <h6 className="cart-item-qty-price">{qty} x {currencyFormat(price)}</h6>
+                    <QuantitySelector product={product} />
                 </div>
                 <div className="cart-item  cart-item-totalPrice">
-                    <p>${price * qty}</p>
+                    <p>{currencyFormat(price * qty)}</p>
                 </div>
                 <div className="cart-item cart-item-delete">
-                    <Button onClick={() => clearItemFromCart(sku)}>x</Button>
-                    {/* <SemanticButton size="mini" color='grey' icon>
-                        <Icon name='delete' />
-                    </SemanticButton> */}
+                    <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton>
                 </div>
             </div>
         </Fade >
