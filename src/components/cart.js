@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import { Button } from 'semantic-ui-react';
+import { Button, Dimmer, Loader, Segment } from 'semantic-ui-react';
 
 import { CartContext } from '../context/cart/cart.context';
 import CartItem from './cartItem';
@@ -9,8 +9,9 @@ import CartCost from './cartCost';
 import './cart.css'
 
 const Cart = () => {
+    console.log("Render Component Cart!!");
 
-    const { cart } = useContext(CartContext)
+    const { cart, purchaseOrderCreated } = useContext(CartContext)
 
     if (cart.length === 0) return <p>No hay productos en el carrito ...</p>
 
@@ -25,13 +26,8 @@ const Cart = () => {
             </ul>
             <hr></hr>
             <CartCost />
-            <div className="cart-checkout-button">
-                <Link to="/checkout" >
-                    <Button > Checkout</Button>
-                </Link>
-            </div>
         </div>
     )
 }
 
-export default React.memo(Cart);
+export default Cart;

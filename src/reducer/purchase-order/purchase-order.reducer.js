@@ -9,14 +9,17 @@ export const purchaseOrderReducer = (state, action) => {
                 mp_preferenceId: null,
                 error: false
             }
-        case purchaseOrderActionTypes.SUCCESS_PURCHASE_ORDER:
+        case purchaseOrderActionTypes.SUCCESS_CREATE_PURCHASE_ORDER:
+
+            localStorage.setItem("payment", JSON.stringify(action.payload));
+
             return {
                 ...state,
                 loading: false,
                 mp_preferenceId: action.payload,
                 error: false
             }
-        case purchaseOrderActionTypes.ERROR_PURCHASE_ORDER:
+        case purchaseOrderActionTypes.ERROR_CREATE_PURCHASE_ORDER:
             return {
                 ...state,
                 loading: false,

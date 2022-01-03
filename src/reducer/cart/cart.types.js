@@ -3,5 +3,6 @@ const cartActionTypes = {
     REMOVE_ITEM: 'REMOVE_ITEM',
     CLEAR_ITEM: 'CLEAR_ITEM',
     CLEAR_CART: 'CLEAR_CART',
+    SET_PURCHASE_ORDER_CREATED: 'SET_PURCHASE_ORDER_CREATED'
 }
 export default cartActionTypes;

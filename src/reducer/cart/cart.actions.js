@@ -16,9 +16,14 @@ const clearCart_ACTION = () => ({
     type: cartActionTypes.CLEAR_CART
 })
 
+const setPurschaseOrderCreated_ACTION = value => ({
+    type: cartActionTypes.SET_PURCHASE_ORDER_CREATED, payload: value
+})
+
 export {
     addItemToCart_ACTION,
     removeItemFromCart_ACTION,
     clearItemFromCart_ACTION,
-    clearCart_ACTION
+    clearCart_ACTION,
+    setPurschaseOrderCreated_ACTION,
 }

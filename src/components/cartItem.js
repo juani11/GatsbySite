@@ -12,7 +12,7 @@ import './cartItem.css'
 const CartItem = ({ product }) => {
 
     const { sku, name, price, qty, options } = product
-    const { clearItemFromCart } = useContext(CartContext)
+    const { purchaseOrderCreated, clearItemFromCart } = useContext(CartContext)
 
     return (
         <Fade className="mt-3">
@@ -32,14 +32,17 @@ const CartItem = ({ product }) => {
                         </div>
                     }
                     <h6 className="cart-item-qty-price">{qty} x {currencyFormat(price)}</h6>
-                    <QuantitySelector product={product} />
+                    {!purchaseOrderCreated &&
+                        <QuantitySelector product={product} />}
                 </div>
                 <div className="cart-item  cart-item-totalPrice">
                     <p>{currencyFormat(price * qty)}</p>
                 </div>
-                <div className="cart-item cart-item-delete">
-                    <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton>
-                </div>
+                {!purchaseOrderCreated &&
+                    <div className="cart-item cart-item-delete">
+                        <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton>
+                    </div>
+                }
             </div>
         </Fade >
     );

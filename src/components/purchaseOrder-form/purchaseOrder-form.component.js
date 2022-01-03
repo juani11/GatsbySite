@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Container, Form, Button, Message, Popup } from 'semantic-ui-react';
+import { Container, Form, Message, Popup } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 
 import purchaseOrderActionTypes from '../../reducer/purchase-order/purchase-order.types';
@@ -9,11 +9,13 @@ import { CartContext } from '../../context/cart/cart.context';
 
 import ContactInfo from '../contactInfo';
 import Shipping from '../shipping';
+import Button from '../button/button.component';
 
 const {
     START_CREATE_PURCHASE_ORDER,
-    SUCCESS_PURCHASE_ORDER,
-    ERROR_PURCHASE_ORDER } = purchaseOrderActionTypes
+    SUCCESS_CREATE_PURCHASE_ORDER,
+    ERROR_CREATE_PURCHASE_ORDER
+} = purchaseOrderActionTypes
 
 
 const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
@@ -22,7 +24,7 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
 
     const [hasShipping, setHasShipping] = useState(true);
 
-    const { cart } = useContext(CartContext);
+    const { cart, setPurschaseOrderCreated } = useContext(CartContext);
 
     const onSubmit = (data) => {
         const { email: payer_email, ...shipping_data } = data;
@@ -43,22 +45,23 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
             })
             .then(data => {
                 const { data: { preference_id } } = data;
+                setPurschaseOrderCreated(true)
                 dispatch({
-                    type: SUCCESS_PURCHASE_ORDER,
+                    type: SUCCESS_CREATE_PURCHASE_ORDER,
                     payload: preference_id
                 });
             })
             .catch(error => {
                 console.log(error)
                 dispatch({
-                    type: ERROR_PURCHASE_ORDER,
+                    type: ERROR_CREATE_PURCHASE_ORDER,
                     payload: error
                 });
             });
     }
 
     return (
-        <Form loading={loading} onSubmit={handleSubmit(onSubmit)} error={error}>
+        <Form onSubmit={handleSubmit(onSubmit)} error={error}>
 
             <ContactInfo register={register} errors={errors} />
             <Shipping
@@ -76,7 +79,7 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
                     content='Se produjo un error al generar la orden. Por favor, inténtelo nuevamente'
                 />
                 <Popup
-                    trigger={<Button type='submit' >Proceder al pago</Button>}
+                    trigger={<Button type='submit'>Proceder al pago</Button>}
                     content="El pago será gestionado por MercadoPago"
                     basic
                 />

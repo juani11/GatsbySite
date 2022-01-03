@@ -41,6 +41,11 @@ export const cartReducer = (state, action) => {
                 ...state,
                 cart: []
             }
+        case cartActionTypes.SET_PURCHASE_ORDER_CREATED:
+            return {
+                ...state,
+                purchaseOrderCreated: action.payload
+            }
         default:
             return state
     }

@@ -33,7 +33,7 @@ const Navigation = ({ sticky = false }) => {
 
     const toggle = () => (size[0] <= 768) && setIsOpen(!isOpen);
 
-    const { cantProducts } = useContext(CartContext)
+    const { cantProducts, purchaseOrderCreated } = useContext(CartContext)
 
     const propSticky = sticky ? "top" : ""
     return (
@@ -42,7 +42,7 @@ const Navigation = ({ sticky = false }) => {
                 <NavbarBrand href="/"><img src={logo} width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
 
                 {/* SI SE ESTA MOSRANDO UNA ORDEN DE PAGO, NO MOSTRAR LOS ITEMS DEL NAVBAR */}
-                {true &&
+                {!purchaseOrderCreated &&
                     <>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar>

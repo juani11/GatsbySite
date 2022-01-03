@@ -1,7 +1,32 @@
 import React, { useEffect } from 'react';
-import { Message } from 'semantic-ui-react';
-import CheckoutBoxHOC from '../../hoc/checkoutBox';
+import Container from 'reactstrap/lib/Container';
+import { Image } from 'semantic-ui-react';
+
+
 import useScript from '../../hooks/useScript';
+import CheckoutBoxHOC from '../../hoc/checkoutBox';
+import Header from '../header/header.component';
+
+import mpcreditimg from '../../images/layoutImgs/mpPaymentMethod/mpcredit.png';
+import mpdebitimg from '../../images/layoutImgs/mpPaymentMethod/mpdebit.png';
+import mpcashimg from '../../images/layoutImgs/mpPaymentMethod/mpcash.png';
+
+import './payment.styles.css';
+
+const mpPaymentMethods = [
+    {
+        name: "Tarjeta de Crédito",
+        src: mpcreditimg
+    },
+    {
+        name: "Tarjeta de Débito",
+        src: mpdebitimg
+    },
+    {
+        name: "Efectivo en puntos de pago",
+        src: mpcashimg
+    }
+]
 
 
 const Payment = ({ preferenceId }) => {
@@ -13,7 +38,7 @@ const Payment = ({ preferenceId }) => {
 
     useEffect(() => {
         if (MercadoPago) {
-            // Agrega credenciales de SDK
+            // Agrega credenciales de SmercadopagoDK
             const mp = new MercadoPago(process.env.MP_PUBLIC_KEY, {
                 locale: 'es-AR'
             });
@@ -32,12 +57,22 @@ const Payment = ({ preferenceId }) => {
         }
     }, [MercadoPago]);
 
+
     return (
-        <>
-            <Message color='blue'>Utilizando la opción Pagar a través de Mercado Pago serás redirigido y podrás pagar de las siguientes formas:</Message>
+        <Container>
+            <p>Al momento de pagar con MercadoPago, serás redirigido y podrás pagar de las siguientes formas:</p>
+
+            {
+                mpPaymentMethods.map(({ name, src }) =>
+                    <>
+                        <Header type="h4" text={name} />
+                        <Image src={src} />
+                    </>
+                )
+            }
             <div className="cho-container"></div>
-        </>
+        </Container>
     );
 }
 
-export default Payment;
+export default CheckoutBoxHOC(Payment, 'Pago', 6);

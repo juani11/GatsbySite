@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import { Button } from 'semantic-ui-react';
 
 import ShopCart from '../components/cart';
+import Container from 'reactstrap/lib/Container';
+import { CartContext } from '../context/cart/cart.context';
+import Button from '../components/button/button.component';
 
 const Cart = () => {
+
+    console.log("Render Page Cart!!");
+    const { cart } = useContext(CartContext)
+
     return (
-        <div className="container" id="Shop" style={{ maxWidth: "1250px" }}>
+        <Container id="Shop" style={{ maxWidth: "1250px" }}>
             <section>
-                <div className="container">
+                <Container>
                     <ShopCart />
-                </div>
+                    {cart.length > 0 &&
+                        <div className="cart-checkout-button">
+                            <Link to="/checkout" >
+                                <Button > Checkout</Button>
+                            </Link>
+                        </div>
+                    }
+                </Container>
             </section>
-        </div>
+        </Container>
     );
 }
 export default Cart;

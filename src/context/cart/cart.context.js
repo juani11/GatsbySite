@@ -4,7 +4,8 @@ import {
     addItemToCart_ACTION,
     clearCart_ACTION,
     clearItemFromCart_ACTION,
-    removeItemFromCart_ACTION
+    removeItemFromCart_ACTION,
+    setPurschaseOrderCreated_ACTION
 } from "../../reducer/cart/cart.actions";
 import { cartReducer } from "../../reducer/cart/cart.reducer";
 
@@ -12,7 +13,8 @@ import { cartReducer } from "../../reducer/cart/cart.reducer";
 const CartContext = createContext();
 
 const initialState = {
-    cart: []
+    cart: [],
+    purchaseOrderCreated: false
 }
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -23,6 +25,11 @@ if (windowGlobal.localStorage) {
         const cart = JSON.parse(windowGlobal.localStorage.getItem('cart'))
 
         initialState.cart = cart
+    }
+
+
+    if (windowGlobal.localStorage.getItem('payment')) {
+        console.log("HAY PAYMENT!!!!!!");
     }
 }
 
@@ -55,10 +62,14 @@ const CartProvider = ({ children }) => {
         )
     }
 
+    const setPurschaseOrderCreated = value => dispatch(setPurschaseOrderCreated_ACTION(value))
+
     return (
         <CartContext.Provider value={
             {
                 cart: state.cart,
+                purchaseOrderCreated: state.purchaseOrderCreated,
+                setPurschaseOrderCreated,
                 addItemToCart,
                 removeItemFromCart,
                 clearItemFromCart,
