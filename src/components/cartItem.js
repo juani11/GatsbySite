@@ -25,7 +25,7 @@ const CartItem = ({ product }) => {
                     {options &&
                         <div className="cart-item-options">
                             {options.map(o =>
-                                <div className="cart-item-option" >
+                                <div className="cart-item-option" key={o.value}>
                                     <p className="cart-item-option-name">{o.name}: <span className="cart-item-option-value">{o.value}</span></p>
                                 </div>
                             )}

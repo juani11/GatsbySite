@@ -47,7 +47,7 @@ const Navigation = ({ sticky = false }) => {
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ml-auto" navbar>
-                                {navigationData.map((navItemData) => <NavigationItem {...navItemData} onClick={toggle} />)}
+                                {navigationData.map((navItemData) => <NavigationItem {...navItemData} onClick={toggle} key={navItemData.id} />)}
                                 <NavigationItem
                                     name={`Carrito (${cantProducts()})`}
                                     pathname={"/cart"}

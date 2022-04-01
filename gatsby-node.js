@@ -93,7 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = graphql(`
   query {
-    allCommerceProduct {
+    commerceProducts: allCommerceProduct {
       edges {
         node {
           id
@@ -121,9 +121,32 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
+  
+    commerceProductsImages:allCommerceProductImagesJson {
+      edges {
+        node {
+          title
+          images {
+            src {
+              absolutePath
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
   `).then(result => {
-    result.data.allCommerceProduct.edges.forEach(({ node }) => {
+    result.data.commerceProducts.edges.forEach(({ node }) => {
+
+      const productImages = (result.data.commerceProductsImages.edges)
+        .find(({ node: imageNode }) => imageNode.title === node.name)
+
       const finalSlug = '/' + ((node.name).replace(/\s/g, '-'));
       createPage({
         path: finalSlug,
@@ -131,7 +154,9 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          product: node
+          product: node,
+          productImages: productImages.node.images,
+          dirName: `${process.env.SHOP_IMAGES_BASE_URL}/${node.name}`
         },
       });
     });

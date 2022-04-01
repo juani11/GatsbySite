@@ -1,0 +1,26 @@
+[
+  {
+    "title": "El porque de los colores",
+    "mainImage": {
+      "src": "../images/io/ioShop/El porque de los colores/Neocolor 01.jpg"
+    },
+    "images": [
+      { "src": "../images/io/ioShop/El porque de los colores/Neocolor 01.jpg" },
+      { "src": "../images/io/ioShop/El porque de los colores/Neocolor 02.jpg" }
+    ]
+  },
+  {
+    "title": "Producto numero 2",
+    "mainImage": {
+      "src": "../images/io/ioShop/Producto numero 2/Neocolor 02.jpg"
+    },
+    "images": [
+      { "src": "../images/io/ioShop/Producto numero 2/Neocolor 02.jpg" }
+    ]
+  },
+  {
+    "title": "Remera bobo",
+    "mainImage": { "src": "../images/io/ioShop/Remera bobo/Neocolor 03.jpg" },
+    "images": [{ "src": "../images/io/ioShop/Remera bobo/Neocolor 03.jpg" }]
+  }
+]

@@ -12,11 +12,18 @@ require("dotenv").config({
 
 module.exports = {
   /*  proxy: {
-
-     url: "http://localhost:4000",
-   }, */
+    
+    url: "http://localhost:4000",
+  }, */
   /* Your site config here */
   plugins: [
+    {
+      resolve: `gatsby-source-commerce-products`,
+      options: {
+        baseUrl: `localhost:4000`,
+        protocol: `http`,
+      }
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -27,7 +34,13 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: path.join(__dirname, `src`, `images`),
+        path: `${__dirname}/src/images/`//path.join(__dirname, `src`, `images`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/`,
       },
     },
     /*{
@@ -36,14 +49,9 @@ module.exports = {
 icon:`faviconn`
       }
     }*/
-
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-source-commerce-products`,
-      options: {
-        baseUrl: `localhost:4000`,
-        protocol: `http`,
-      }
-    }
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-json`
   ],
 }

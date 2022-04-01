@@ -83,13 +83,13 @@ const Grid = (props) => {
         <div ref={gridRef} className="grid-container" style={{ marginTop: "50px" }}>
             {columns.map((column) => {
                 return (
-                    <div className="grid-column">
+                    <div className="grid-column" key={column.id}>
                         {column.map(image => {
                             const imgName = (image.fluid.originalName).split(".")[0]
                             const imgLink = '/' + imgName.replace(/\s/g, '-')
                             const randomDelay = delay_arr[Math.floor(Math.random() * delay_arr.length)]
                             return (
-                                <AnimateGridImg image={image} imgName={imgName} imgLink={imgLink} delay={randomDelay} detail={detail} />
+                                <AnimateGridImg image={image} imgName={imgName} imgLink={imgLink} delay={randomDelay} detail={detail} key={image.id} />
                                 /* <ReactWOW animation='fadeIn' delay={randomDelay} duration="0.5s">
                                     <div className="grid-img-wrapper" key={image.id} >
                                         <Link to={imgLink}>
