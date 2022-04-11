@@ -121,31 +121,9 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  
-    commerceProductsImages:allCommerceProductImagesJson {
-      edges {
-        node {
-          title
-          images {
-            src {
-              absolutePath
-              childImageSharp {
-                fluid {
-                  src
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
   }
   `).then(result => {
     result.data.commerceProducts.edges.forEach(({ node }) => {
-
-      const productImages = (result.data.commerceProductsImages.edges)
-        .find(({ node: imageNode }) => imageNode.title === node.name)
 
       const finalSlug = '/' + ((node.name).replace(/\s/g, '-'));
       createPage({
@@ -155,7 +133,6 @@ exports.createPages = async ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           product: node,
-          productImages: productImages.node.images,
           dirName: `${process.env.SHOP_IMAGES_BASE_URL}/${node.name}`
         },
       });

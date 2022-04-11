@@ -15,6 +15,7 @@
   width: 50%;
 }
 .cart-item-image {
+  width: 100px;
 }
 .cart-item-name {
   text-transform: uppercase;

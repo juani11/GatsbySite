@@ -1,0 +1,16 @@
+.product-current-image {
+  color: green;
+}
+
+.product-small-image {
+  width: 120px;
+  height: 144px;
+  margin: 4px;
+  /* background-color: greenyellow; */
+  display: inline;
+  float: left;
+}
+
+.selected-image {
+  border: 3px solid #000;
+}

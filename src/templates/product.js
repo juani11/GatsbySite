@@ -1,16 +1,20 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext, Fragment } from "react"
+import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image"
 
 import { Container } from 'reactstrap';
-import { Button, Grid, Image } from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 
 import { CartContext } from "../context/cart/cart.context";
 
 import ProductOption from "../components/product-option/product-option.component";
 import ProductAddedAlert from "../components/product-added-alert/product-added-alert.component";
 
+import ProductImages from "../components/product-images/product-images.component";
 import "./product.css"
 
-export default ({ pageContext }) => {
+
+export default ({ pageContext, data }) => {
     /** Info de objeto product en pageContext
      * 
      *  
@@ -40,6 +44,7 @@ export default ({ pageContext }) => {
       }
       }
      */
+
     const { addItemToCart } = useContext(CartContext);
 
     const { product } = pageContext
@@ -47,6 +52,12 @@ export default ({ pageContext }) => {
 
     console.log('Informacion del producto...');
     console.log(product);
+
+
+    console.log('Informacion de las imagenes del producto usando useStaticQuery ...');
+    console.log(data.allFile);
+    const productMainImage = getImage(data.allFile.edges[0].node)
+
 
     const [productVariantFormed, setProductVariantFormed] = useState({
         price: product.regular_price
@@ -119,7 +130,8 @@ export default ({ pageContext }) => {
         addItemToCart({
             ...productVariantFormed,
             name: product.name,
-            description: product.description
+            description: product.description,
+            mainImage: productMainImage
         })
         setVisible(true);
         setTimeout(() => {
@@ -135,10 +147,10 @@ export default ({ pageContext }) => {
     return (
         <Container>
             <section>
-
                 <Grid columns={2} stackable >
                     <Grid.Column>
-                        <Image src='https://www.worldloppet.com/wp-content/uploads/2018/10/no-img-placeholder.png' />
+                        {/* <GatsbyImage image={productImage} alt={product.name} /> */}
+                        <ProductImages images={data.allFile.edges} />
                     </Grid.Column>
                     <Grid.Column >
                         <div className="product">
@@ -149,18 +161,19 @@ export default ({ pageContext }) => {
                             <p className="product-description"> {product.description}</p>
 
                             {options && options.map(o =>
-                                <>
+                                <Fragment key={o.id}>
                                     <p className="product-option-name">{o.name}</p>
                                     <div className="product-option-possibleValues">
                                         {o.possibleValues.map(value =>
                                             <ProductOption
+                                                key={value}
                                                 option={{ id: o.id, value }}
                                                 className={optionClassName}
                                                 handleClick={handleClickLabel}
                                             />
                                         )}
                                     </div>
-                                </>
+                                </Fragment>
                             )}
                         </div>
                         <Button className="product-addToCart"
@@ -176,3 +189,18 @@ export default ({ pageContext }) => {
         </Container >
     )
 }
+
+//Obtengo las imagenes del producto..
+export const query = graphql`
+    query productImages($dirName:String!) {
+        allFile(filter: {relativeDirectory: {eq:$dirName}}) {
+            edges {
+                node {
+                    childImageSharp {
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                    }
+                }
+            }
+        }
+    }
+`
