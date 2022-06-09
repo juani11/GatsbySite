@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GatsbyImage } from "gatsby-plugin-image"
 
 import { Button, Fade } from "reactstrap";
-import { Button as SemanticButton, Image } from "semantic-ui-react";
+import { Button as SemanticButton, Image, Icon } from "semantic-ui-react";
 
 import QuantitySelector from './cart-item-quantity-selector/cart-item-quantity-selector.component';
 
@@ -19,11 +19,11 @@ const CartItem = ({ product }) => {
     return (
         // <Fade className="mt-3">
         <div className="cart-item-wrapp">
-            <div className="cart-item-image">
+            <div className="cart-item cart-item-image">
                 <GatsbyImage image={mainImage} />
             </div>
             <div className="cart-item">
-                <h6 className="cart-item-name">{name}</h6>
+                <p className="cart-item-name">{name}</p>
                 {options &&
                     <div className="cart-item-options">
                         {options.map(o =>
@@ -42,7 +42,8 @@ const CartItem = ({ product }) => {
             </div>
             {!purchaseOrderCreated &&
                 <div className="cart-item cart-item-delete">
-                    <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton>
+                    {/* <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton> */}
+                    <Icon name='close' size='large' onClick={() => clearItemFromCart(sku)} />
                 </div>
             }
         </div>

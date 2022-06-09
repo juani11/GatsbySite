@@ -1,5 +1,6 @@
 .cart-list {
   list-style: none;
+  padding: 0px;
 }
 
 .cart-list-item {

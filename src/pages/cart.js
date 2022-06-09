@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 
-import ShopCart from '../components/cart';
+import CartListItems from '../components/cartListItems';
 import Container from 'reactstrap/lib/Container';
 import { CartContext } from '../context/cart/cart.context';
 import Button from '../components/button/button.component';
@@ -14,16 +14,16 @@ const Cart = () => {
     return (
         <Container id="Shop" style={{ maxWidth: "1250px" }}>
             <section>
-                <Container>
-                    <ShopCart />
-                    {cart.length > 0 &&
-                        <div className="cart-checkout-button">
-                            <Link to="/checkout" >
-                                <Button > Checkout</Button>
-                            </Link>
-                        </div>
-                    }
-                </Container>
+                {/* <Container> */}
+                <CartListItems />
+                {cart.length > 0 &&
+                    <div className="cart-checkout-button">
+                        <Link to="/checkout" >
+                            <Button > Checkout</Button>
+                        </Link>
+                    </div>
+                }
+                {/* </Container> */}
             </section>
         </Container>
     );

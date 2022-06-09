@@ -6,9 +6,9 @@ import { CartContext } from '../context/cart/cart.context';
 import CartItem from './cartItem';
 import CartCost from './cartCost';
 
-import './cart.css'
+import './cartListItems.css'
 
-const Cart = () => {
+const CartListItems = () => {
     console.log("Render Component Cart!!");
 
     const { cart, purchaseOrderCreated } = useContext(CartContext)
@@ -30,4 +30,4 @@ const Cart = () => {
     )
 }
 
-export default Cart;
+export default CartListItems;

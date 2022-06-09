@@ -1,11 +1,14 @@
 import React from 'react'
 
 import CheckoutBoxHOC from '../hoc/checkoutBox';
-import Cart from './cart';
+import CartListItems from './cartListItems';
 
 const OrderSummary = () => {
     return (
-        <Cart />
+        <div style={{ 'padding': '15px' }} >
+
+            <CartListItems />
+        </div>
     );
 }
 

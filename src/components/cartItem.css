@@ -8,6 +8,7 @@
   color: black; */
   display: table;
   width: 100%;
+  margin-bottom: 20px;
 }
 .cart-item {
   display: table-cell;
@@ -15,12 +16,31 @@
   width: 50%;
 }
 .cart-item-image {
-  width: 100px;
+  width: 25%;
 }
 .cart-item-name {
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
+@media (max-width: 764px) {
+  .cart-item-name,
+  .cart-item-option-name {
+    font-size: 10px;
+  }
+
+  .cart-item-option-value,
+  .cart-item-qty-price {
+    font-size: 12px;
+  }
+
+  .cart-item-totalPrice p {
+    font-size: 18px !important;
+  }
+  .cart-item-image {
+    width: 50%;
+  }
+}
+
 .cart-item-option {
   margin-right: 20px;
   display: inline-block !important;
