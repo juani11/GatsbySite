@@ -145,19 +145,20 @@ export default ({ pageContext, data }) => {
 
 
     return (
-        <Container>
-            <section>
-                <Grid columns={2} stackable >
-                    <Grid.Column>
-                        {/* <GatsbyImage image={productImage} alt={product.name} /> */}
-                        <ProductImages images={data.allFile.edges} />
-                    </Grid.Column>
-                    <Grid.Column >
+        // <Container>
+        <section>
+            <Grid columns={2} stackable  >
+                <Grid.Column width={10}>
+                    {/* <GatsbyImage image={productImage} alt={product.name} /> */}
+                    <ProductImages images={data.allFile.edges} />
+                </Grid.Column>
+                <Grid.Column width={6} >
+                    <div id="product-info">
                         <div className="product">
+                            <p className="product-category ant-tag ant-tag-purple"> {product.category.name}</p>
                             <h1 className="product-name">{product.name}</h1>
                             {/* <Label color="purple">{product.category.name}</Label> */}
-                            <p className="product-category ant-tag ant-tag-purple"> {product.category.name}</p>
-                            <h2 className="product-price"> {`$ ${productVariantFormed.price}`}</h2>
+                            <h2 className="product-price"> {`$${productVariantFormed.price}`}</h2>
                             <p className="product-description"> {product.description}</p>
 
                             {options && options.map(o =>
@@ -182,11 +183,12 @@ export default ({ pageContext, data }) => {
                             Agregar al carrito
                         </Button>
                         <ProductAddedAlert visible={visible} />
-                    </Grid.Column>
-                </Grid>
-            </section>
+                    </div>
+                </Grid.Column>
+            </Grid>
+        </section>
 
-        </Container >
+        // </Container >
     )
 }
 

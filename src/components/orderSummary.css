@@ -1,0 +1,32 @@
+.order-summary-product-name {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.order-summary-product-options {
+  display: inline-block;
+}
+
+.order-summary-product-option-name {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.order-summary-product-option-value {
+  font-weight: 600;
+  margin-left: 2px;
+  margin-right: 7px;
+}
+
+.order-summary-product-price {
+  margin-top: 6px;
+}
+.order-summary-product-price span:first-of-type {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.order-summary-product-price span:last-of-type {
+  font-weight: 300;
+}
