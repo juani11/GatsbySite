@@ -3,6 +3,7 @@ import instImg from '../images/layoutImgs/inst.png';
 import linkImg from '../images/layoutImgs/link.png';
 import contactImg from '../images/layoutImgs/contact.png';
 const Footer = () => {
+    const year = new Date().getFullYear()
     return (
         <footer className="footer">
             <div style={{ textAlign: "center" }}>
@@ -14,7 +15,7 @@ const Footer = () => {
                     <img src={contactImg} width="200" height="65" alt="contactme" />
                     <p style={{ fontsize: "16px" }}>contacto@mariajuliatagliero.com</p>
                 </div>
-                <p style={{ color: "#999" }}> &copy; 2020 MARIA JULIA TAGLIERO </p>
+                <p style={{ color: "#999" }}> &copy; {year} MARIA JULIA TAGLIERO </p>
             </div>
         </footer>
     );
