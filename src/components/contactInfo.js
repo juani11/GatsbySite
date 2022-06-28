@@ -1,6 +1,5 @@
 import React from 'react'
 
-import CheckoutBoxHOC from '../hoc/checkoutBox';
 import FormField from './form-field/form-field.component.js';
 
 const ContactInfo = (props) => {
@@ -8,7 +7,7 @@ const ContactInfo = (props) => {
     const { register, errors } = props;
 
     return (
-        <div style={{ 'padding': '15px' }} >
+        <div style={{ marginTop: "20px" }}>
             {/*    <Form.Field error={errors.email ? true : false}>
                 <label>Email</label>
                 <input type="text" {...register("email",
@@ -27,4 +26,4 @@ const ContactInfo = (props) => {
     );
 
 }
-export default CheckoutBoxHOC(ContactInfo, 'Información de Contacto');
+export default ContactInfo

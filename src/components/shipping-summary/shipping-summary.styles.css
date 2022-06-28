@@ -1,0 +1,10 @@
+.shipping-summary-street {
+  font-weight: 600;
+  font-size: 14px;
+}
+.shipping-summary-province,
+.shipping-summary-name {
+  font-weight: 300;
+  font-size: 13px;
+  text-transform: capitalize;
+}

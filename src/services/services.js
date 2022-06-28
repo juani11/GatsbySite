@@ -14,3 +14,10 @@ const fetchAPI = (method, url, request) => {
 
 export const createPurchaseOrder = request => fetchAPI('POST', 'checkout/order', request)
 
+export const getPurchaseOrder = request => fetch(`${process.env.GATSBY_API_URL}/publico/orders/${request}`, {
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+})
+

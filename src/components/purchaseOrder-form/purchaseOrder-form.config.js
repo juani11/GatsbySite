@@ -9,8 +9,8 @@ const rules = {
     name: {
         required: 'Debe ingresar un nombre',
         maxLength: {
-            value: 20,
-            message: 'Debe ingresar como máximo 20 caracteres'
+            value: 25,
+            message: 'Debe ingresar como máximo 25 caracteres'
         }
     },
     phone: {

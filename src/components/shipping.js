@@ -4,25 +4,29 @@ import { Form, Dropdown, Grid, Radio } from 'semantic-ui-react'
 
 import { provinceOptions } from "./purchaseOrder-form/purchaseOrder-form.data";
 
-import CheckoutBoxHOC from "../hoc/checkoutBox";
 import FormField from "./form-field/form-field.component.js";
 import FormFieldError from "./form-field-error/form-field-error.component";
 
 import "./shipping.css"
 
+const { Row, Column } = Grid;
+
 const Shipping = (props) => {
 
     const { register, errors, setValue, unregister, hasShipping, setHasShipping } = props;
-    const { Row, Column } = Grid;
 
 
-    const handleFocus = e => { e.target.setAttribute("autocomplete", "nope"); }
+    const handleFocus = e => {
+        e.target.setAttribute("autocomplete", "nope");
+    }
 
-    const handleChange = (e, { name, value }) => {
+    const handleChange = (_, { name, value }) => {
         setValue(name, value, { shouldValidate: true })
     }
 
-    const handleChangeRadio = (e, { value }) => setHasShipping(value)
+    const handleChangeRadio = (_, { value }) => {
+        setHasShipping(value)
+    }
 
     const provinceDropdown = register('province', {
         validate: value => {
@@ -47,7 +51,7 @@ const Shipping = (props) => {
         />
 
     return (
-        <div style={{ 'padding': '15px' }} >
+        <div style={{ marginTop: "20px" }}>
             <div style={{ marginBottom: "35px", }} >
                 <Form.Field>
                     <RadioHasShipping
@@ -67,7 +71,7 @@ const Shipping = (props) => {
                         register={register}
                         name="name"
                         error={errors.name}
-                        maxLength={20} />
+                        maxLength={25} />
 
                     <FormField
                         register={register}
@@ -78,7 +82,7 @@ const Shipping = (props) => {
                     <Grid columns={3} centered stackable>
                         <Row>
                             <Column width={8}>
-                                <Form.Field error={errors.province ? true : false}>
+                                <Form.Field error={errors.province}>
                                     <label>Provincia</label>
                                     <Dropdown
                                         onFocus={handleFocus}
@@ -92,6 +96,7 @@ const Shipping = (props) => {
                                         }}
                                         onBlur={provinceDropdown.onBlur}
                                         ref={provinceDropdown.ref}
+                                        defaultValue={15}
                                     // value={getValues('province')}
                                     />
                                     {errors.province && <FormFieldError>{errors.province.message}</FormFieldError>}
@@ -145,16 +150,21 @@ const Shipping = (props) => {
                         </Row>
                     </Grid>
 
-                    <Form.Field>
-                        <label>Aclaraciones adicionales sobre la dirección (opcional)</label>
-                        <textarea placeholder="Descripción de la fachada,referencias,indicaciones de seguridad,etc" style={{ maxHeight: 80 }} ></textarea>
-                    </Form.Field>
+                    <Grid columns={1} centered stackable>
+                        <Row>
+                            <Column floated='left'>
+                                <Form.Field>
+                                    <label>Aclaraciones adicionales sobre la dirección (opcional)</label>
+                                    <textarea  ></textarea>
+                                </Form.Field>
+                            </Column>
+                        </Row>
+                    </Grid>
+
                 </>
             }
         </div >
-
     )
-
 }
 
-export default CheckoutBoxHOC(Shipping, 'Información de Envío', 6);
+export default Shipping

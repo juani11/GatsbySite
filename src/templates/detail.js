@@ -44,7 +44,7 @@ export default ({ data, location }) => {
                         </ReactWOW>
 
                     ) : (
-                        <div class="img-detail-wrapper">
+                        <div className="img-detail-wrapper">
                             <Zoom>
                                 <Img fluid={ilustration.childImageSharp.fluid} style={{ borderRadius: 3 }} />
                             </Zoom>

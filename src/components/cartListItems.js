@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'gatsby';
-import { Button, Dimmer, Loader, Segment } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 
 import { CartContext } from '../context/cart/cart.context';
 import CartItem from './cartItem';
-import CartCost from './cartCost';
+import OrderCost from './orderCost';
 
 import './cartListItems.css'
 
 const CartListItems = () => {
     console.log("Render Component Cart!!");
 
-    const { cart, purchaseOrderCreated } = useContext(CartContext)
+    const { cart, subTotal } = useContext(CartContext)
 
     if (cart.length === 0) return <p>No hay productos en el carrito ...</p>
 
@@ -24,8 +23,8 @@ const CartListItems = () => {
                     </li>
                 )}
             </ul>
-            <hr></hr>
-            <CartCost />
+            <Divider />
+            <OrderCost data={subTotal()} />
         </div>
     )
 }

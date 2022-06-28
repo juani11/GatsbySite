@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Container, Fade } from 'reactstrap'
+import Loading from '../components/loading/loading.component'
 //HOC(Componente de orden superior)..funcion que recibe un componente y devuelve otro componente
 
 // Esta función recibe un componente...
@@ -16,9 +17,12 @@ function CheckoutBoxHOC(WrappedComponent, title, colMd) {
                         </div> */}
                         <h5 className="checkout-box-subtitle">{title}</h5>
                     </div>
-                    <WrappedComponent
-                        {...props}
-                    />
+                    <Loading loading={!props ? true : false}>
+                        <WrappedComponent
+                            {...props}
+                        />
+                    </Loading>
+
                 </div>
             </Container>
         </Fade>

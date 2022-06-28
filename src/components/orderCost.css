@@ -1,8 +1,8 @@
-.cart-cost {
+.order-cost {
   text-align: right;
 }
 
-.cart-cost-total {
+.order-cost-total {
   font-size: 25px;
   font-weight: bold;
 }
