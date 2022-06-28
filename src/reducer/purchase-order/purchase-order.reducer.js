@@ -7,16 +7,18 @@ export const purchaseOrderReducer = (state, action) => {
                 ...state,
                 loading: true,
                 mp_preferenceId: null,
+                shipping: null,
                 error: false
             }
         case purchaseOrderActionTypes.SUCCESS_CREATE_PURCHASE_ORDER:
 
-            localStorage.setItem("payment", JSON.stringify(action.payload));
+            localStorage.setItem("purchaseOrder", JSON.stringify(action.payload));
 
             return {
                 ...state,
                 loading: false,
-                mp_preferenceId: action.payload,
+                mp_preferenceId: action.payload.preferenceId,
+                shipping: action.payload.shippingData,
                 error: false
             }
         case purchaseOrderActionTypes.ERROR_CREATE_PURCHASE_ORDER:
@@ -24,6 +26,7 @@ export const purchaseOrderReducer = (state, action) => {
                 ...state,
                 loading: false,
                 mp_preferenceId: null,
+                shipping: null,
                 error: true
             }
         default:

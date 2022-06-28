@@ -11,10 +11,12 @@ const FormField = ({
     width = 16,
     maxLength = null
 }) => {
+    const handleFocus = e => { e.target.setAttribute("autocomplete", "nope"); }
+
     return (
-        <Form.Field width={width} error={error}>
+        <Form.Field width={width} error={error} >
             <label>{formConfig[name].label}</label>
-            <input type="text" maxLength={maxLength && maxLength} {...register(name,
+            <input onFocus={handleFocus} type="text" maxLength={maxLength && maxLength} {...register(name,
                 { ...formConfig[name].rules }
             )}
             />
