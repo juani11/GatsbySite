@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Confirm, Container, Form, Message } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 
 import { createPurchaseOrder } from '../../services/services';
-
-import { CartContext } from '../../context/cart/cart.context';
 
 import ContactInfo from '../contactInfo';
 import Shipping from '../shipping';
@@ -15,6 +13,7 @@ import {
     successCreatePurchaseOrder
 } from '../../reducer/purchase-order/purchase-order.actions';
 import Card from '../card/card.component';
+import { useCartContext } from '../../hooks/useCartContext';
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -25,15 +24,13 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
 
     const [hasShipping, setHasShipping] = useState(true);
 
-    const [showConfirm, setShowConfirm] = useState(false)
-
-    const { cart } = useContext(CartContext);
+    const context = useCartContext()
 
     const onSubmit = (data) => {
         const { email: payer_email, ...shipping_data } = data;
 
         const request = {
-            products: [...cart],
+            products: [...context.cart],
             payer_email,
             shipping: hasShipping,
             shipping_data

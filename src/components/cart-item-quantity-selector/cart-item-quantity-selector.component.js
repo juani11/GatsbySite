@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { CartContext } from '../../context/cart/cart.context';
+import { useCartContext } from '../../hooks/useCartContext';
 
 import './cart-item-quantity-selector.styles.css'
 
 const QuantitySelector = ({ product }) => {
 
-    const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+    const context = useCartContext()
 
     return (
         <div className="cart-item-qty-selector">
-            <Button size="mini" onClick={() => removeItemFromCart(product.sku)}>-</Button>
+            <Button size="mini" onClick={() => context.removeItemFromCart(product.sku)}>-</Button>
             <input value={product.qty} />
-            <Button size="mini" onClick={() => addItemToCart(product)}>+</Button>
+            <Button size="mini" onClick={() => context.addItemToCart(product)}>+</Button>
         </div>
     );
 }

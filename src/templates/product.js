@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext, Fragment } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image"
 
-import { Container } from 'reactstrap';
 import { Button, Grid } from "semantic-ui-react";
 
-import { CartContext } from "../context/cart/cart.context";
 
 import ProductOption from "../components/product-option/product-option.component";
 import ProductAddedAlert from "../components/product-added-alert/product-added-alert.component";
 
 import ProductImages from "../components/product-images/product-images.component";
-import "./product.css"
+import { useCartContext } from "../hooks/useCartContext";
 
+import "./product.css"
 
 export default ({ pageContext, data }) => {
     /** Info de objeto product en pageContext
@@ -45,7 +44,7 @@ export default ({ pageContext, data }) => {
       }
      */
 
-    const { addItemToCart } = useContext(CartContext);
+    const context = useCartContext()
 
     const { product } = pageContext
     const { options, variants } = product;
@@ -127,7 +126,7 @@ export default ({ pageContext, data }) => {
     }
 
     const handleAddToCart = () => {
-        addItemToCart({
+        context.addItemToCart({
             ...productVariantFormed,
             name: product.name,
             description: product.description,

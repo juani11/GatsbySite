@@ -1,21 +1,21 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import { Button, Fade } from "reactstrap";
-import { Button as SemanticButton, Image, Icon } from "semantic-ui-react";
+import { Button as SemanticButton, Icon } from "semantic-ui-react";
 
 import QuantitySelector from './cart-item-quantity-selector/cart-item-quantity-selector.component';
 
-import { CartContext } from '../context/cart/cart.context';
 import { currencyFormat } from '../utils/functions';
+import { useCartContext } from '../hooks/useCartContext';
 
 import './cartItem.css'
 
 const CartItem = ({ product }) => {
 
     const { sku, name, price, qty, options, mainImage } = product
-    const { purchaseOrderCreated, clearItemFromCart } = useContext(CartContext)
+    const context = useCartContext()
 
+    console.log("mainImage: ", mainImage);
     return (
         // <Fade className="mt-3">
         <div className="cart-item-wrapp">
@@ -34,18 +34,17 @@ const CartItem = ({ product }) => {
                     </div>
                 }
                 <h6 className="cart-item-qty-price">{qty} x {currencyFormat(price)}</h6>
-                {!purchaseOrderCreated &&
-                    <QuantitySelector product={product} />}
+                <QuantitySelector product={product} />
             </div>
             <div className="cart-item  cart-item-totalPrice">
                 <p>{currencyFormat(price * qty)}</p>
             </div>
-            {!purchaseOrderCreated &&
-                <div className="cart-item cart-item-delete">
-                    {/* <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton> */}
-                    <Icon name='close' size='large' onClick={() => clearItemFromCart(sku)} />
-                </div>
-            }
+
+            <div className="cart-item cart-item-delete">
+                {/* <SemanticButton size="medium" onClick={() => clearItemFromCart(sku)}>x</SemanticButton> */}
+                <Icon name='close' size='large' onClick={() => context.clearItemFromCart(sku)} />
+            </div>
+
         </div>
         // </Fade >
     );

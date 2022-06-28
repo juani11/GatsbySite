@@ -48,14 +48,17 @@ const Checkout = () => {
         <Container>
             <section>
                 <Loading loading={loading}>
-                    <Grid stackable reversed="mobile" >
-                        <Grid.Column width={9}>
+                    <Grid stackable reversed="mobile tablet vertically" >
+                        <Grid.Column tablet={16} computer={9} >
                             {mp_preferenceId
                                 ? <Payment preferenceId={mp_preferenceId} />
-                                : <PurchaseOrderForm checkoutState={{ loading, error }} dispatch={dispatch} />
+                                : <PurchaseOrderForm
+                                    checkoutState={{ loading, error }}
+                                    dispatch={dispatch}
+                                />
                             }
                         </Grid.Column>
-                        <Grid.Column width={7}>
+                        <Grid.Column tablet={16} computer={7}>
                             {mp_preferenceId && shipping &&
                                 <Card title="Resumen del envío">
                                     <ShippingSummary data={shipping} />

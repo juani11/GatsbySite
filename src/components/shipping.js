@@ -41,17 +41,21 @@ const Shipping = (props) => {
         }
     }, [hasShipping]);
 
-    const RadioHasShipping = ({ label, value }) =>
-        <Radio style={{ fontSize: "14px", textTransform: "uppercase" }}
-            label={label}
-            name='hasShipping'
-            value={value}
-            checked={value ? hasShipping : !hasShipping}
-            onChange={handleChangeRadio}
-        />
+    const RadioHasShipping = ({ label, value }) => {
+        console.log("render RadioHasShipping!");
+        return (
+            <Radio style={{ fontSize: "14px", textTransform: "uppercase" }}
+                label={label}
+                name='hasShipping'
+                value={value}
+                checked={value ? hasShipping : !hasShipping}
+                onChange={handleChangeRadio}
+            />
+        )
+    }
 
     return (
-        <div style={{ marginTop: "20px" }}>
+        <>
             <div style={{ marginBottom: "35px", }} >
                 <Form.Field>
                     <RadioHasShipping
@@ -163,7 +167,7 @@ const Shipping = (props) => {
 
                 </>
             }
-        </div >
+        </ >
     )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from "gatsby"
 import {
     Collapse,
@@ -11,9 +11,9 @@ import {
 } from 'reactstrap';
 
 import logo from '../images/layoutImgs/logob.png'
-import { CartContext } from '../context/cart/cart.context';
 import { useWindowSize } from '../hooks/windowsSize';
 import { navigationData } from '../utils/constants';
+import { useCartContext } from '../hooks/useCartContext';
 
 
 const NavigationItem = ({ name, pathname, scrollTop = false, onClick }) =>
@@ -25,7 +25,7 @@ const NavigationItem = ({ name, pathname, scrollTop = false, onClick }) =>
 
 
 
-const Navigation = ({ sticky = false }) => {
+const Navigation = ({ sticky, currentPath }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ const Navigation = ({ sticky = false }) => {
 
     const toggle = () => (size[0] <= 768) && setIsOpen(!isOpen);
 
-    const { cantProducts, purchaseOrderCreated } = useContext(CartContext)
+    const context = useCartContext()
 
     const propSticky = sticky ? "top" : ""
     return (
@@ -41,15 +41,15 @@ const Navigation = ({ sticky = false }) => {
             <Container>
                 <NavbarBrand href="/"><img src={logo} width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
 
-                {/* SI SE ESTA MOSRANDO UNA ORDEN DE PAGO, NO MOSTRAR LOS ITEMS DEL NAVBAR */}
-                {!purchaseOrderCreated &&
+                {/* SI ESTA EN CHECKOUT, NO MOSTRAR LOS ITEMS DEL NAVBAR */}
+                {currentPath != '/checkout' &&
                     <>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 {navigationData.map((navItemData) => <NavigationItem {...navItemData} onClick={toggle} key={navItemData.id} />)}
                                 <NavigationItem
-                                    name={`Carrito (${cantProducts()})`}
+                                    name={`Carrito (${context.cantProducts()})`}
                                     pathname={"/cart"}
                                     onClick={toggle}
                                 />
