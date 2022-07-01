@@ -2,7 +2,7 @@
 // var fs = require('fs');
 const fs = require('fs-extra')
 const path = require(`path`)
-
+const { URL } = require('url');
 const fetch = require("node-fetch");
 const axios = require('axios');
 const { createRemoteFileNode, createFilePath } = require(`gatsby-source-filesystem`);
@@ -36,7 +36,9 @@ exports.sourceNodes = async ({
     const { createNode } = actions
 
     // Download data from a remote API.
-    const response = await fetch(`${process.env.GATSBY_API_URL}/publico`)
+    const url = new URL('/publico', process.env.GATSBY_API_URL)
+    //const response = await fetch(`${process.env.GATSBY_API_URL}/publico`)
+    const response = await fetch(url.href)
 
 
     const json = await response.json();
