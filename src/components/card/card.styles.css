@@ -47,6 +47,7 @@ input:-internal-autofill-selected {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .card-box-subtitle {
@@ -55,4 +56,5 @@ input:-internal-autofill-selected {
   font-weight: 200;
   margin-bottom: 20px !important;
   font-family: "Raleway", sans-serif;
+  margin-bottom: 15px;
 }

@@ -7,13 +7,19 @@ import "./layout.css"
 import '../styles/bootstrap.min.css'
 import { navigationData } from "../utils/constants";
 export default ({ children, location }) => {
+
+    const { pathname } = location
+
     return (
         <div>
             {
-                (location.pathname === '/') && <SlideShow />
+                (pathname === '/') && <SlideShow />
             }
             {
-                ((location.pathname === '/') || (location.pathname === '/bio') || (location.pathname === '/books')) ? <Navigation sticky={true} /> : <Navigation />
+                ((pathname === '/') || (pathname === '/bio') || (pathname === '/books')) ?
+                    <Navigation sticky currentPath={pathname} />
+                    :
+                    <Navigation currentPath={pathname} />
             }
 
             {children}

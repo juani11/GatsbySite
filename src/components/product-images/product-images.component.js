@@ -1,69 +1,38 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Grid } from 'semantic-ui-react';
 
 import "./product-images.styles.css"
-import { Grid } from 'semantic-ui-react';
-import ProductImagesSlider from '../product-images-slider/product-images-slider.component';
 
 const ProductImages = ({ images }) => {
 
-    const [indexCurrentImage, setIndexCurrentImage] = useState(0);
+    const mainImage = getImage(images[0].node);
 
-    const currentImage = getImage(images[indexCurrentImage].node);
+    //Saco la mainImage de images para procesar las smallImages
+    const smallImagesWithoutMain = images.slice(1)
 
-    const handleClick = index => setIndexCurrentImage(index)
-    const smalImage = getImage(images[1].node);
-    const smalImage2 = getImage(images[2].node);
-    const smalImage3 = getImage(images[3].node);
-    const smalImage4 = getImage(images[4].node);
+    const smallImages = smallImagesWithoutMain.map(i => ({
+        src: getImage(i.node),
+        alt: i.node.name
+    }))
+
     return (
-        // <div>
-        //     <div className="product-current-image">
-        //         <GatsbyImage image={currentImage} alt={"sad"} />
-        //     </div>
-        //     <div className="product-small-images">
-        //         <ul style={{ padding: "0px" }}>
-        //             {images.map((_, index) => {
-        //                 const smalImage = getImage(images[index].node);
-        //                 return (
-        //                     <li className={`product-small-image ${index === indexCurrentImage && "selected-image"}`} >
-        //                         <a onClick={() => handleClick(index)} href={"#"}>
-        //                             <GatsbyImage image={smalImage} alt={"sad"} />
-        //                         </a>
-        //                     </li>
-        //                 )
-        //             })}
-        //         </ul>
-        //     </div>
-        // </div>
-
-        <div>
+        <>
             <div className="product-current-image">
-                <GatsbyImage image={currentImage} alt={"sad"} />
+                <GatsbyImage image={mainImage} alt={"sad"} />
             </div>
             <Grid columns={2} padded>
-                <Grid.Row>
-                    <Grid.Column>
-                        <GatsbyImage image={smalImage} alt={"sad"} />
+                {smallImages.map(smallImage =>
+                    <Grid.Column key={smallImage.alt}>
+                        <GatsbyImage
+                            image={smallImage.src}
+                            alt={smallImage.alt}
+                        />
                     </Grid.Column>
-                    <Grid.Column>
-                        <GatsbyImage image={smalImage2} alt={"sad"} />
-                    </Grid.Column>
-                </Grid.Row>
-
-                <Grid.Row>
-                    <Grid.Column>
-                        <GatsbyImage image={smalImage3} alt={"sad"} />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <GatsbyImage image={smalImage4} alt={"sad"} />
-                    </Grid.Column>
-                </Grid.Row>
+                )}
             </Grid>
-        </div>
-
-
+        </>
         //Slider
         // <ProductImagesSlider images={images} />
 

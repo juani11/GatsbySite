@@ -15,6 +15,7 @@ import Card from '../components/card/card.component'
 import '../components/checkout.css'
 import CheckoutBoxHOC from '../hoc/checkoutBox';
 import { useCartContext } from '../hooks/useCartContext';
+import { isBrowser } from '../utils/functions';
 
 const initialState = {
     loading: false,
@@ -23,12 +24,12 @@ const initialState = {
     shipping: { hasShipping: '', shippingData: '' }
 }
 
-const windowGlobal = typeof window !== 'undefined' && window
+// const windowGlobal = typeof window !== 'undefined' && window
 
-if (windowGlobal.localStorage) {
-    if (windowGlobal.localStorage.getItem('purchaseOrder')) {
+if (isBrowser()) {
+    if (window.localStorage.getItem('purchaseOrder')) {
         console.log("HAY purchaseOrder creada!!!!!!");
-        const purchaseOrder = JSON.parse(windowGlobal.localStorage.getItem('purchaseOrder'))
+        const purchaseOrder = JSON.parse(window.localStorage.getItem('purchaseOrder'))
 
         //initialState.mp_preferenceId = purchaseOrder.preferenceId
         initialState.shipping = purchaseOrder.shippingData

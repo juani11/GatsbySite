@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react"
 
+
 import {
     addItemToCart_ACTION,
     clearCart_ACTION,
@@ -8,28 +9,41 @@ import {
     setPurschaseOrderCreated_ACTION
 } from "../../reducer/cart/cart.actions";
 import { cartReducer } from "../../reducer/cart/cart.reducer";
+import { isBrowser } from "../../utils/functions";
 
 
-const CartContext = createContext();
+
+const CartContext = createContext({
+    cart: [],
+    addItemToCart: () => { },
+    removeItemFromCart: () => { },
+    clearItemFromCart: () => { },
+    clearCart: () => { },
+    cantProducts: () => { },
+    subTotal: () => { }
+});
 
 const initialState = {
     cart: [],
     purchaseOrderCreated: false
 }
 
-const windowGlobal = typeof window !== 'undefined' && window
+
+// const windowGlobal = typeof window !== 'undefined' && window
 
 
-if (windowGlobal.localStorage) {
-    if (windowGlobal.localStorage.getItem('cart')) {
-        const cart = JSON.parse(windowGlobal.localStorage.getItem('cart'))
+if (isBrowser()) {
+    if (window.localStorage.getItem('cart')) {
+        const cart = JSON.parse(window.localStorage.getItem('cart'))
 
         initialState.cart = cart
     }
 
 
-    if (windowGlobal.localStorage.getItem('payment')) {
-        console.log("HAY PAYMENT!!!!!!");
+    if (window.localStorage.getItem('purchaseOrder')) {
+        console.log("HAY purchaseOrder creada!!!!!!");
+        initialState.purchaseOrderCreated = true
+
     }
 }
 

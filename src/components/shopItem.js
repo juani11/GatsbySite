@@ -16,12 +16,14 @@ const ShopItem = (props) => {
     const image = getImage(product.mainImage.src)
 
     return (
-        <div className="shop-item">
-            <Link to={productLink}>
-                <GatsbyImage image={image} alt={product.name} />
-                <p className="shop-item-name">{product.name}</p>
-            </Link>
-        </div>
+        <>
+            <div className="shop-item">
+                <Link to={productLink}>
+                    <GatsbyImage image={image} alt={product.name} />
+                </Link>
+                <h4 className="shop-item-name">{product.name}</h4>
+            </div>
+        </>
     );
 }
 

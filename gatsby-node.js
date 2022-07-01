@@ -97,6 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
       edges {
         node {
           id
+          productId
           name
           description
           regular_price
@@ -133,7 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           product: node,
-          dirName: `${process.env.SHOP_IMAGES_BASE_URL}/${node.name}`
+          dirName: `${process.env.SHOP_IMAGES_BASE_URL}/${node.productId}`
         },
       });
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from 'semantic-ui-react';
+import { Container, Divider } from 'semantic-ui-react';
 
 import CartItem from './cartItem';
 import OrderCost from './orderCost';
@@ -12,7 +12,14 @@ const CartListItems = () => {
 
     const context = useCartContext()
 
-    if (context.cart.length === 0) return <p>No hay productos en el carrito ...</p>
+    if (context.cart.length === 0)
+        return (
+            <Container>
+                <div style={{ padding: "20px", marginBottom: "70px" }}>
+                    <h3>No hay productos en el carrito ...</h3>
+                </div>
+            </Container>
+        )
 
     return (
         <div>

@@ -20,7 +20,8 @@
 }
 
 .product-option-name {
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
+  font-weight: 300;
   margin: 0 !important;
 }
 
@@ -31,7 +32,7 @@
 .product-addToCart {
   margin-top: 15px !important;
   margin-bottom: 30px !important;
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 #product-info {

@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import ShopItem from "../components/shopItem"
 import { Grid } from "semantic-ui-react"
+
+import ShopItem from "../components/shopItem"
 
 
 const Shop = () => {
@@ -38,43 +39,36 @@ const Shop = () => {
         }
     `)
 
+
     console.log('Shop Data...');
     console.log(data.allCommerceProduct.edges);
 
     const allCommerceProductMainImage = data.allCommerceProductImagesJson.edges;
 
+
     return (
         <div className="container" id="Shop" style={{ maxWidth: "1250px" }}>
             <section>
-                <h4 style={{ textAlign: "center" }}>Shop page!</h4>
-                <div className="container">
-                    <Grid columns={3} stackable>
-                        <Grid.Row>
-                            {/* <div className="row"> */}
-                            {data.allCommerceProduct.edges.map((nodeProduct) => {
-                                const { node: productNode } = nodeProduct;
+                {/* <h4 style={{ textAlign: "center" }}>Shop page!</h4> */}
+                <Grid columns={3} stackable>
+                    {data.allCommerceProduct.edges.map((nodeProduct) => {
+                        const { node: productNode } = nodeProduct;
 
-                                //Busco la imagen de portada del producto actual dentro del resultado de la query allCommerceProductImagesJson
-                                const { node: { mainImage: commerceProductMainImage } } = allCommerceProductMainImage.find(({ node }) => node.title === productNode.name)
+                        //Busco la imagen de portada del producto actual dentro del resultado de la query allCommerceProductImagesJson
+                        const { node: { mainImage } } = allCommerceProductMainImage.find(({ node }) => node.title === productNode.name)
 
-                                const product = {
-                                    ...productNode,
-                                    mainImage: commerceProductMainImage
-                                }
+                        const product = {
+                            ...productNode,
+                            mainImage
+                        }
 
-                                return (
-                                    <Grid.Column>
-                                        <ShopItem
-                                            key={product.id}
-                                            product={product}
-                                        />
-                                    </Grid.Column>
-                                )
-                            })}
-                            {/* </div> */}
-                        </Grid.Row>
-                    </Grid>
-                </div>
+                        return (
+                            <Grid.Column key={product.id}>
+                                <ShopItem product={product} />
+                            </Grid.Column>
+                        )
+                    })}
+                </Grid>
             </section>
         </div>
     );

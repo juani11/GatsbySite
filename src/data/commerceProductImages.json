@@ -1,26 +1,26 @@
 [
   {
     "title": "El porque de los colores",
-    "mainImage": {
-      "src": "../images/io/ioShop/El porque de los colores/Neocolor 01.jpg"
-    },
-    "images": [
-      { "src": "../images/io/ioShop/El porque de los colores/Neocolor 01.jpg" },
-      { "src": "../images/io/ioShop/El porque de los colores/Neocolor 02.jpg" }
-    ]
+    "mainImage": { "src": "../images/io/ioShop/1/Neocolor 01.jpg" }
   },
   {
     "title": "Producto numero 2",
-    "mainImage": {
-      "src": "../images/io/ioShop/Producto numero 2/Neocolor 02.jpg"
-    },
-    "images": [
-      { "src": "../images/io/ioShop/Producto numero 2/Neocolor 02.jpg" }
-    ]
+    "mainImage": { "src": "../images/io/ioShop/2/Neocolor 02.jpg" }
   },
   {
     "title": "Remera bobo",
-    "mainImage": { "src": "../images/io/ioShop/Remera bobo/Neocolor 03.jpg" },
-    "images": [{ "src": "../images/io/ioShop/Remera bobo/Neocolor 03.jpg" }]
+    "mainImage": { "src": "../images/io/ioShop/3/Neocolor 03.jpg" }
+  },
+  {
+    "title": "Que soñe anoche",
+    "mainImage": { "src": "../images/io/ioShop/4/Neocolor 08.jpg" }
+  },
+  {
+    "title": "Otro producto",
+    "mainImage": { "src": "../images/io/ioShop/5/Neocolor 16.jpg" }
+  },
+  {
+    "title": "Cuadro de arte",
+    "mainImage": { "src": "../images/io/ioShop/6/Neocolor 17.jpg" }
   }
 ]

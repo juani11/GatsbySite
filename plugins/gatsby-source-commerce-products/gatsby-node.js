@@ -53,6 +53,7 @@ exports.sourceNodes = async ({
     const processProduct = async (product) => {
         return {
             ...product,
+            productId: product.id,
             id: createNodeId(product.id),
             internal: {
                 type: PRODUCT_NODE_TYPE,

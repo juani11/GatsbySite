@@ -60,22 +60,6 @@ export default ({ data, location }) => {
 export const query = graphql`
     query($name: String!) {
        
-    othersIlustrations:allFile(filter: {name: {ne: $name}, relativeDirectory: {eq: "io/ioMedium"}}) {
-            edges {
-                node {
-                    name
-                    base
-                    childImageSharp {
-                        fluid{
-                            ...GatsbyImageSharpFluid
-                            originalName
-                        }
-                        id
-                    }
-                }
-            }
-        }
-    
     selectIlustration:allFile(filter: {name: {eq: $name}, relativeDirectory: {eq: "io/ioLarge"}}) {
             edges {
                 node {
