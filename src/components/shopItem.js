@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 
-import "./shopitem.css"
+import "./shopItem.css"
 
 const ShopItem = (props) => {
 
