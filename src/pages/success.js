@@ -12,6 +12,7 @@ import OrderSummary from '../components/orderSummary';
 import Card from '../components/card/card.component';
 import OrderCost from '../components/orderCost';
 import { Divider } from 'semantic-ui-react';
+import { isBrowser } from '../utils/functions';
 
 
 const Success = ({ location }) => {
@@ -29,7 +30,7 @@ const Success = ({ location }) => {
     const OrderSummaryWithPlaceholder = WithPlaceholder(OrderSummary)
 
     if (!payment_id && !status) {
-        navigate("/")
+        if (isBrowser()) navigate("/")
         return null
     }
 
