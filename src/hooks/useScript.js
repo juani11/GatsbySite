@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { isBrowser } from '../utils/functions'
 
 export default function useScript(url, name) {
     const [lib, setLib] = useState({})
@@ -8,7 +9,10 @@ export default function useScript(url, name) {
 
         script.src = url
         script.async = true
-        script.onload = () => setLib({ [name]: window[name] })
+        script.onload = () => {
+            if (isBrowser())
+                setLib({ [name]: window[name] })
+        }
 
         document.body.appendChild(script)
 
