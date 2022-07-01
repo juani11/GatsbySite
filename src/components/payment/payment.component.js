@@ -69,7 +69,7 @@ const Payment = ({ preferenceId }) => {
     useEffect(() => {
         if (MercadoPago) {
             // Agrega credenciales de mercadopagoSDK
-            const mp = new MercadoPago(process.env.MP_PUBLIC_KEY, {
+            const mp = new MercadoPago(`${process.env.MP_PUBLIC_KEY}`, {
                 locale: 'es-AR'
             });
 
