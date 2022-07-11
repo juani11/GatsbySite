@@ -2,8 +2,13 @@ import React from 'react';
 import instImg from '../images/layoutImgs/inst.png';
 import linkImg from '../images/layoutImgs/link.png';
 import contactImg from '../images/layoutImgs/contact.png';
-const Footer = () => {
-    const year = new Date().getFullYear()
+
+const year = new Date().getFullYear()
+
+const Footer = ({ currentPath }) => {
+
+    if ((currentPath == '/checkout') || (currentPath == '/cart')) return null
+
     return (
         <footer className="footer">
             <div style={{ textAlign: "center" }}>

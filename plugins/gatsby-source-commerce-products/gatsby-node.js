@@ -36,7 +36,7 @@ exports.sourceNodes = async ({
     const { createNode } = actions
 
     // Download data from a remote API.
-    const url = new URL('/server/public/publico', `${process.env.GATSBY_API_BASE_URL}`)
+    const url = new URL(`${process.env.GATSBY_API_URL}/publico`, `${process.env.GATSBY_API_BASE_URL}`)
     //const response = await fetch(`${process.env.GATSBY_API_URL}/publico`)
     const response = await fetch(url)
 

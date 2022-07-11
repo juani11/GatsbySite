@@ -1,24 +1,23 @@
 
 import React from "react";
-import { Fade, Container } from "reactstrap";
+import { Fade } from "reactstrap";
+import DesktopContainer from "../desktop-container/desktop-container.component";
 
 import './card.styles.css'
 
 const Card = ({ title, children }) => {
+
     return (
         <Fade>
-            <Container>
+            <DesktopContainer >
                 <div className="card-box ">
                     <div className="card-box-title">
-                        {/* <div className="card-box-badge">
-                        </div> */}
                         <h5 className="card-box-subtitle">{title}</h5>
                     </div>
                     {children}
                 </div>
-            </Container>
+            </DesktopContainer>
         </Fade>
-
     );
 }
 

@@ -14,6 +14,7 @@ import logo from '../images/layoutImgs/logob.png'
 import { useWindowSize } from '../hooks/windowsSize';
 import { navigationData } from '../utils/constants';
 import { useCartContext } from '../hooks/useCartContext';
+import { Icon } from 'semantic-ui-react';
 
 
 const NavigationItem = ({ name, pathname, scrollTop = false, onClick }) =>
@@ -37,9 +38,11 @@ const Navigation = ({ sticky, currentPath }) => {
 
     const propSticky = sticky ? "top" : ""
     return (
-        <Navbar color="white" light expand="md" sticky={propSticky} id="section-works-content">
+        <Navbar color="white" light expand="md" sticky={propSticky} id="section-works-content" toggleable>
             <Container>
-                <NavbarBrand href="/"><img src={logo} width="180" height="32" alt="Maria Julia Tagliero" /></NavbarBrand>
+                <NavbarBrand href="/">
+                    <img src={logo} width="180" height="32" alt="Maria Julia Tagliero" />
+                </NavbarBrand>
 
                 {/* SI ESTA EN CHECKOUT, NO MOSTRAR LOS ITEMS DEL NAVBAR */}
                 {currentPath != '/checkout' &&
@@ -47,10 +50,18 @@ const Navigation = ({ sticky, currentPath }) => {
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar>
                             <Nav className="ml-auto" navbar>
-                                {navigationData.map((navItemData) => <NavigationItem {...navItemData} onClick={toggle} key={navItemData.id} />)}
+                                {navigationData.map((navItemData) =>
+                                    <NavigationItem {...navItemData} onClick={toggle} key={navItemData.id} />
+                                )}
+
                                 <NavigationItem
-                                    name={`Carrito (${context.cantProducts()})`}
-                                    pathname={"/cart"}
+                                    name={
+                                        <>
+                                            <Icon name='shopping cart' size='small' />
+                                            {`(${context.cantProducts()})`}
+                                        </>
+                                    }
+                                    pathname="/cart"
                                     onClick={toggle}
                                 />
                             </Nav>

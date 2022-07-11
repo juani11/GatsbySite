@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import CartListItems from '../components/cartListItems';
 import Container from 'reactstrap/lib/Container';
@@ -18,9 +17,7 @@ const Cart = () => {
                 <CartListItems />
                 {context.cart.length > 0 &&
                     <div className="cart-checkout-button">
-                        <Link to="/checkout" >
-                            <Button > Checkout</Button>
-                        </Link>
+                        <Button link="/checkout" floated="right" width={4}>Checkout</Button>
                     </div>
                 }
                 {/* </Container> */}

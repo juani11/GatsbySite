@@ -1,11 +1,30 @@
+import { Link } from 'gatsby';
 import React from 'react';
-import { Button as SemanticButton } from 'semantic-ui-react'
+import { Grid, Button as SemanticButton } from 'semantic-ui-react'
 
-import './button.styles.css';
+// import './button.styles.css';
 
-const Button = ({ type, children }) => {
+const Button = ({
+    floated,
+    link,
+    width,
+    ...buttonProps
+}) => {
     return (
-        <SemanticButton type={type} > {children} </SemanticButton>
+        <Grid columns={1}>
+            <Grid.Column mobile={16} tablet={16} computer={width} floated={floated}>
+                {link ?
+                    <Link to={link}>
+                        <SemanticButton fluid
+                            {...buttonProps}
+                        />
+                    </Link>
+                    : <SemanticButton fluid
+                        {...buttonProps}
+                    />
+                }
+            </Grid.Column>
+        </Grid>
     );
 }
 

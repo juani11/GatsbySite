@@ -7,6 +7,7 @@ export const purchaseOrderReducer = (state, action) => {
                 ...state,
                 loading: true,
                 mp_preferenceId: null,
+                init_point: null,
                 shipping: null,
                 error: false
             }
@@ -18,6 +19,7 @@ export const purchaseOrderReducer = (state, action) => {
                 ...state,
                 loading: false,
                 mp_preferenceId: action.payload.preferenceId,
+                init_point: action.payload.initPoint,
                 shipping: action.payload.shippingData,
                 error: false
             }
@@ -26,6 +28,7 @@ export const purchaseOrderReducer = (state, action) => {
                 ...state,
                 loading: false,
                 mp_preferenceId: null,
+                init_point: null,
                 shipping: null,
                 error: true
             }

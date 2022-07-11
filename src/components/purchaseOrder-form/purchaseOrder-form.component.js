@@ -15,15 +15,16 @@ import {
 import Card from '../card/card.component';
 import { useCartContext } from '../../hooks/useCartContext';
 import { isBrowser } from '../../utils/functions';
-
-// const windowGlobal = typeof window !== 'undefined' && window
+import DesktopContainer from '../desktop-container/desktop-container.component';
 
 
 const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
+    console.count("render PurchaseOrderForm")
 
     const { register, handleSubmit, setValue, formState: { errors }, unregister, reset } = useForm();
 
     const [hasShipping, setHasShipping] = useState(true);
+
 
     const context = useCartContext()
 
@@ -45,8 +46,9 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
                 return response.json()
             })
             .then(data => {
-                const { data: { preference_id } } = data;
+                const { data: { preference_id, init_point } } = data;
                 dispatch(successCreatePurchaseOrder(preference_id,
+                    init_point,
                     {
                         hasShipping,
                         shipping_data: {
@@ -62,7 +64,8 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
             });
         // setTimeout(() => {
         //     const preference_id = 1452;
-        //     dispatch(successCreatePurchaseOrder(preference_id,
+        //     const init_point = "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=1030664029-797556d5-2dce-4a12-a085-c0fbc34ee593"
+        //     dispatch(successCreatePurchaseOrder(preference_id, init_point,
         //         {
         //             hasShipping,
         //             shipping_data: {
@@ -98,14 +101,14 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)} error={error}>
 
-            <Card title="Información de Contacto">
+            <Card title="Información de Contacto" >
                 <ContactInfo
                     register={register}
                     errors={errors}
                 />
             </Card>
 
-            <Card title="Información del Envío">
+            <Card title="Información del Envío" >
                 <Shipping
                     register={register}
                     errors={errors}
@@ -122,8 +125,11 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
                     header='No fue posible crear la orden de pago'
                     content='Se produjo un error al generar la orden. Por favor, inténtelo nuevamente'
                 />
-                <Button color='grey' type='submit'>Proceder al pago</Button>
             </Container>
+
+            <DesktopContainer>
+                <Button type='submit' >Proceder al pago</Button>
+            </DesktopContainer>
 
         </Form>
     );

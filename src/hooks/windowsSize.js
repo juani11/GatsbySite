@@ -10,5 +10,10 @@ export const useWindowSize = () => {
         updateSize();
         return () => window.removeEventListener('resize', updateSize);
     }, []);
-    return { size };
+
+    const desktopSize = () => (size[0] >= 1224)
+    const tabletSize = () => (size[0] >= 768 & size[0] <= 1224)
+    const mobileSize = () => (size[0] <= 768)
+
+    return { size, desktopSize, tabletSize, mobileSize };
 }

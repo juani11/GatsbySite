@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { navigate } from "gatsby"
 
 import Container from 'reactstrap/lib/Container';
@@ -13,6 +13,11 @@ import Card from '../components/card/card.component';
 import OrderCost from '../components/orderCost';
 import { Divider } from 'semantic-ui-react';
 import { isBrowser } from '../utils/functions';
+import { useCartContext } from '../hooks/useCartContext';
+
+
+localStorage.removeItem("cart");
+localStorage.removeItem("purchaseOrder");
 
 
 const Success = ({ location }) => {
@@ -25,9 +30,15 @@ const Success = ({ location }) => {
     const external_reference = params.get("external_reference");
 
     const { loading, data, error } = useFetch(getPurchaseOrder, external_reference)
+    const context = useCartContext()
 
     const ShippingSummaryWithPlaceholder = WithPlaceholder(ShippingSummary)
     const OrderSummaryWithPlaceholder = WithPlaceholder(OrderSummary)
+
+    useEffect(() => {
+        context.clearCart()
+    }, [])
+
 
     if (!payment_id && !status) {
         if (isBrowser()) navigate("/")
@@ -45,10 +56,7 @@ const Success = ({ location }) => {
                 <Card title="Resumen del envío">
                     <ShippingSummaryWithPlaceholder
                         isLoading={loading}
-                        data={{
-                            hasShipping: data?.shipping,
-                            shipping_data: data?.shipping_data
-                        }}
+                        data={data?.shipping_data}
                     />
                 </Card>
                 <Card title="Resumen de la orden">

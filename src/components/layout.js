@@ -23,7 +23,7 @@ export default ({ children, location }) => {
             }
 
             {children}
-            <Footer />
+            <Footer currentPath={pathname} />
         </div>
     )
 }

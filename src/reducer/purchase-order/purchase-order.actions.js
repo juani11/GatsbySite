@@ -4,9 +4,9 @@ const startCreatePurchaseOrder = () => ({
     type: purchaseOrderActionTypes.START_CREATE_PURCHASE_ORDER
 })
 
-const successCreatePurchaseOrder = (preferenceId, shippingData) => ({
+const successCreatePurchaseOrder = (preferenceId, initPoint, shippingData) => ({
     type: purchaseOrderActionTypes.SUCCESS_CREATE_PURCHASE_ORDER,
-    payload: { preferenceId, shippingData }
+    payload: { preferenceId, initPoint, shippingData }
 })
 
 const errorCreatePurchaseOrder = error => ({

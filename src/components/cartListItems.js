@@ -15,8 +15,8 @@ const CartListItems = () => {
     if (context.cart.length === 0)
         return (
             <Container>
-                <div style={{ padding: "20px", marginBottom: "70px" }}>
-                    <h3>No hay productos en el carrito ...</h3>
+                <div style={{ padding: "25px 0" }}>
+                    <h4>No hay productos en el carrito ...</h4>
                 </div>
             </Container>
         )
