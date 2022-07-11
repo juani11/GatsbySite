@@ -71,10 +71,10 @@ export const query = graphql`
         allFile(filter: {relativeDirectory: {eq: $dirName}} sort: {fields: name, order: ASC}) {
             edges {
                 node {
+                    name
                     childImageSharp {
                         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
                     }
-                name
                 }
             }
         }

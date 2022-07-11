@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import ReactWOW from 'react-wow'
 
 import { chunk } from 'lodash';
@@ -17,14 +17,15 @@ const delay_arr = ["0.1s", "0.2s", "0.3s", "0.4s", "0.5s"];
 
 const AnimateGridImg = (props) => {
     const { image, imgName, imgLink, delay, detail } = props
+
     return (
         <ReactWOW animation='fadeIn' delay={delay} duration="0.5s">
-            <div className="grid-img-wrapper" key={image.id} >
+            <div className="grid-img-wrapper" >
                 {detail ?
                     <Link to={imgLink}>
-                        <Img fluid={image.fluid} alt={imgName} style={{ borderRadius: 3 }} />
+                        <GatsbyImage image={image} alt={imgName} />
                     </Link>
-                    : <Img fluid={image.fluid} alt={imgName} style={{ borderRadius: 3 }} />
+                    : <GatsbyImage image={image} alt={imgName} />
                 }
             </div>
         </ReactWOW>
@@ -32,14 +33,14 @@ const AnimateGridImg = (props) => {
 }
 
 const Grid = (props) => {
-
+    console.log("render Grid!!");
     //Obtengo la resolucion actual de la pantalla
     const { size } = useWindowSize();
 
     const {
         data: { edges },
         location: { state },
-        detail = true,
+        detail,
         columnsWeb = 4,
         columnsTablet = 4,
         columnsMobile = 2
@@ -47,7 +48,6 @@ const Grid = (props) => {
 
 
     const cantImgs = edges.length;
-    //const cantColumns = (size[0] <= 1224) ? columnsMobile : columnsWeb;
 
     //Web(default)
     let cantColumns = columnsWeb;
@@ -66,7 +66,7 @@ const Grid = (props) => {
     //Separo el arreglo de imagenes retornado por la query en un arreglo de arreglos, donde cada arreglo tiene como maximo (cantImgs / columnsWeb) elementos. 
     //Por ej: Si el arreglo que devuelve la query tiene 24 imagenes, y la cantidad de columnas requeridas es 4,  se separa el arreglo en 4 arreglos con 6 elementos cada uno (cantImgs / columnsWeb = 24/4 = 6)
     const columns = chunk(edges.map(image => ({
-        ...image.node.childImageSharp
+        ...image.node
     })), chunkLength);
 
     const gridRef = useRef(null);
@@ -85,18 +85,18 @@ const Grid = (props) => {
                 return (
                     <div className="grid-column" key={column.id}>
                         {column.map(image => {
-                            const imgName = (image.fluid.originalName).split(".")[0]
+                            const imgName = image.name
                             const imgLink = '/' + imgName.replace(/\s/g, '-')
                             const randomDelay = delay_arr[Math.floor(Math.random() * delay_arr.length)]
                             return (
-                                <AnimateGridImg image={image} imgName={imgName} imgLink={imgLink} delay={randomDelay} detail={detail} key={image.id} />
-                                /* <ReactWOW animation='fadeIn' delay={randomDelay} duration="0.5s">
-                                    <div className="grid-img-wrapper" key={image.id} >
-                                        <Link to={imgLink}>
-                                            <Img fluid={image.fluid} alt={imgName} />
-                                        </Link>
-                                    </div>
-                                </ReactWOW> */
+                                <AnimateGridImg
+                                    key={image.id}
+                                    detail={detail}
+                                    image={getImage(image)}
+                                    imgName={imgName}
+                                    imgLink={imgLink}
+                                    delay={randomDelay}
+                                />
                             )
                         })}
                     </div>

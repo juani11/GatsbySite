@@ -9,13 +9,9 @@ const Index = ({ location }) => {
 			allFile(filter: {extension: {regex: "/(jpg)|(png)|(jpeg)/"} relativeDirectory: {eq:"io/ioMedium"}}) {
 				edges {
 					node {
-						base
+						name
 						childImageSharp {
-							fluid(maxWidth: 1200) {
-								...GatsbyImageSharpFluid
-								originalName
-							}
-							id
+							gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 						}
 					}
 				}
@@ -26,7 +22,7 @@ const Index = ({ location }) => {
 
 
 	return (
-		<IlustrationsGrid data={data.allFile} location={location} columnsMobile={1} />
+		<IlustrationsGrid data={data.allFile} location={location} columnsMobile={1} detail />
 	);
 }
 
