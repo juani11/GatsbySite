@@ -15,10 +15,10 @@ import { Divider } from 'semantic-ui-react';
 import { isBrowser } from '../utils/functions';
 import { useCartContext } from '../hooks/useCartContext';
 
-
-localStorage.removeItem("cart");
-localStorage.removeItem("purchaseOrder");
-
+if (isBrowser()) {
+    window.localStorage.removeItem("cart");
+    window.localStorage.removeItem("purchaseOrder");
+}
 
 const Success = ({ location }) => {
     console.log("Location: ", location);
