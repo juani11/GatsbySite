@@ -68,7 +68,7 @@ const Checkout = () => {
                         <Grid.Column tablet={16} computer={7}>
                             {mp_preferenceId && shipping &&
                                 <Card title="Resumen del envío" >
-                                    <ShippingSummary data={shipping} />
+                                    <ShippingSummary data={shipping.shippingData} />
                                 </Card>
                             }
                             <Card title="Resumen de la orden" >

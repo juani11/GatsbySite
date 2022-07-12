@@ -13,7 +13,7 @@ const ShippingSummaryContainer = ({ children }) => {
     )
 }
 
-const ShippingSummary = ({ data: { shipping_data } }) => {
+const ShippingSummary = ({ data: shipping_data }) => {
 
     if (shipping_data) {
         const { department, locality, name, number, phone, province, street, zip } = shipping_data
