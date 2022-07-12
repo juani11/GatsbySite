@@ -20,4 +20,3 @@ export const getPurchaseOrder = request => fetch(`${process.env.GATSBY_API_BASE_
         'Content-Type': 'application/json'
     }
 })
-

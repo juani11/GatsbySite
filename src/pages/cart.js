@@ -13,14 +13,12 @@ const Cart = () => {
     return (
         <Container id="Shop" style={{ maxWidth: "1250px" }}>
             <section>
-                {/* <Container> */}
                 <CartListItems />
                 {context.cart.length > 0 &&
                     <div className="cart-checkout-button">
                         <Button link="/checkout" floated="right" width={4}>Checkout</Button>
                     </div>
                 }
-                {/* </Container> */}
             </section>
         </Container>
     );

@@ -74,8 +74,6 @@ const Checkout = () => {
                             <Card title="Resumen de la orden" >
                                 <OrderSummary data={context.cart} />
                             </Card>
-
-
                         </Grid.Column>
                     </Grid>
                 </Loading>

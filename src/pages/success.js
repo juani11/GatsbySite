@@ -50,7 +50,7 @@ const Success = ({ location }) => {
             <section>
                 <div style={{ padding: "20px", marginBottom: "70px" }}>
                     <h2>{`¡Gracias por tu compra! :)`}</h2>
-                    <p>El pago ya ha sido aprobado!, en breve iniciaremos el proceso de envío a la direccion especificada!.</p>
+                    <p>El pago ya ha sido aprobado!. Si indicaste una direccion para envío, en breve iniciaremos el proceso de envío a la dirección especificada!.</p>
                 </div>
 
                 <Card title="Resumen del envío">

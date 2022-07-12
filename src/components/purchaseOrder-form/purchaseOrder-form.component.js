@@ -128,7 +128,9 @@ const PurchaseOrderForm = ({ checkoutState: { loading, error }, dispatch }) => {
             </Container>
 
             <DesktopContainer>
-                <Button type='submit' >Proceder al pago</Button>
+                <div style={{ marginBottom: "100px" }}>
+                    <Button type='submit' >Proceder al pago</Button>
+                </div>
             </DesktopContainer>
 
         </Form>
